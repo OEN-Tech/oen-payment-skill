@@ -12,11 +12,23 @@
 |____/|_|\_\_|_|_|
 ```
 
-# Oen Payment Skill — 應援金流 Claude Code 技能
+# Oen Payment Skill — 應援金流 AI 技能
 
-> 讓 Claude Code 成為你的金流整合助手
+> 讓你的 AI 編程助手成為金流整合專家
 
-這是一個 [Claude Code](https://docs.anthropic.com/en/docs/claude-code) 的 **Skill（技能）**，協助開發者快速整合 [Oen Payment（應援金流）](https://oen.tw) REST API。安裝後，Claude Code 會在你提及金流相關需求時自動啟用，提供 API 串接指引、程式碼生成、錯誤排查等服務。
+這是一個 **AI 編程助手技能（Skill）**，協助開發者快速整合 [Oen Payment（應援金流）](https://oen.tw) REST API。安裝後，AI 助手會在你提及金流相關需求時自動啟用，提供 API 串接指引、程式碼生成、錯誤排查等服務。
+
+## 相容的 AI 編程助手
+
+本技能採用標準 `SKILL.md` 格式，相容於所有支援此規範的 AI 編程框架：
+
+| 框架 | 技能目錄 | 狀態 |
+|------|---------|------|
+| [Claude Code](https://docs.anthropic.com/en/docs/claude-code) | `~/.claude/skills/` 或 `.claude/skills/` | 已驗證 |
+| [OpenClaw](https://github.com/nicepkg/openclaw) | `~/.openclaw/skills/` | 已驗證 |
+| 其他支援 SKILL.md 的框架 | 依框架文件設定 | 應相容 |
+
+技能本身為純 Markdown + YAML frontmatter，不依賴任何框架特定的 API 或工具呼叫。
 
 ## 功能特色
 
@@ -39,31 +51,31 @@
 
 ## 安裝方式
 
-### 方法一：直接複製到你的 Claude Code 技能目錄
+### Claude Code
 
 ```bash
-# 複製到全域技能目錄
-cp -r oen-payment-skill ~/.claude/skills/oen-payment
-
-# 或複製到專案級技能目錄
-cp -r oen-payment-skill .claude/skills/oen-payment
-```
-
-### 方法二：透過 Git Clone
-
-```bash
-# Clone 到全域技能目錄
+# 全域安裝（所有專案可用）
 git clone https://github.com/OEN-Tech/oen-payment-skill.git ~/.claude/skills/oen-payment
 
-# 或 Clone 到專案級技能目錄
+# 或專案級安裝（僅限當前專案）
 git clone https://github.com/OEN-Tech/oen-payment-skill.git .claude/skills/oen-payment
 ```
 
-安裝完成後，重新啟動 Claude Code 即可生效。
+### OpenClaw
+
+```bash
+git clone https://github.com/OEN-Tech/oen-payment-skill.git ~/.openclaw/skills/oen-payment
+```
+
+### 其他框架
+
+將本 repo 複製到你的框架所指定的技能目錄即可。核心檔案為 `SKILL.md`，技能載入時會讀取此檔案及 `references/` 目錄下的參考文件。
+
+安裝完成後，重新啟動你的 AI 編程助手即可生效。
 
 ## 使用方式
 
-安裝後，當你在 Claude Code 中提及以下關鍵字時，技能會自動觸發：
+安裝後，當你在 AI 助手中提及以下關鍵字時，技能會自動觸發：
 
 - `oen payment`、`應援金流`、`oen 金流`
 - 付款、結帳、checkout
@@ -85,7 +97,7 @@ git clone https://github.com/OEN-Tech/oen-payment-skill.git .claude/skills/oen-p
 
 ## 搭配 MCP Server 使用
 
-除了此技能外，你也可以安裝 [Oen Payment MCP Server](https://github.com/OEN-Tech/oen-payment-mcp-server) 來取得即時的金流操作能力（建立交易、查詢交易、退款等）。
+除了此技能外，你也可以安裝 [Oen Payment MCP Server](https://github.com/OEN-Tech/oen-payment-mcp-server) 來取得即時的金流操作能力（建立交易、查詢交易、退款等）。MCP Server 可搭配任何支援 MCP 協定的 AI 工具使用。
 
 ### 快速設定
 
@@ -96,7 +108,7 @@ echo "@OEN-Tech:registry=https://npm.pkg.github.com" >> ~/.npmrc
 echo "//npm.pkg.github.com/:_authToken=YOUR_GITHUB_TOKEN" >> ~/.npmrc
 ```
 
-2. 在 Claude Code 的 MCP 設定中加入：
+2. 在你的 AI 工具的 MCP 設定中加入：
 
 ```json
 {
@@ -171,7 +183,7 @@ echo "//npm.pkg.github.com/:_authToken=YOUR_GITHUB_TOKEN" >> ~/.npmrc
 
 ```
 oen-payment-skill/
-├── SKILL.md              # 技能定義檔（Claude Code 讀取此檔）
+├── SKILL.md              # 技能定義檔（AI 助手載入此檔）
 ├── references/
 │   └── api-docs.md       # 完整 API 文件參考
 ├── README.md             # 本文件
@@ -183,6 +195,7 @@ oen-payment-skill/
 - [Oen 應援科技官網](https://oen.tw)
 - [Oen Payment MCP Server](https://github.com/OEN-Tech/oen-payment-mcp-server)
 - [Claude Code 文件](https://docs.anthropic.com/en/docs/claude-code)
+- [OpenClaw](https://github.com/nicepkg/openclaw)
 
 ## 授權
 
