@@ -42,12 +42,9 @@
 
 | 付款方式 | 說明 |
 |---------|------|
-| 信用卡 | VISA、Mastercard、JCB |
-| LINE Pay | 需另外申請開通 |
+| 信用卡 | VISA、Mastercard、JCB（預設付款方式） |
+| LINE Pay | 需另外申請開通，開通後至 CRM 設定 LINE Pay token |
 | 超商代碼 | 全家便利商店繳費 |
-| 虛擬帳號 | ATM 轉帳 |
-| Apple Pay | 行動支付 |
-| Taiwan Pay | TWQR 掃碼支付 |
 
 ## 安裝方式
 

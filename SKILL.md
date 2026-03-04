@@ -5,7 +5,7 @@ description: Oen Payment (應援金流) integration assistant. Helps developers 
 
 # Oen Payment Integration Assistant
 
-Help developers integrate with the Oen Payment (應援金流) REST API — a unified payment gateway supporting credit cards, LINE Pay, CVS (convenience store), ATM, Apple Pay, and Taiwan Pay.
+Help developers integrate with the Oen Payment (應援金流) REST API — a unified payment gateway supporting credit cards, LINE Pay, and CVS (convenience store) payments.
 
 ## Usage
 
@@ -84,10 +84,9 @@ For production, omit the `{env}.` portion (e.g., `https://{merchantId}.oen.tw/ch
 |--------|-----|-------|
 | Credit Card | (default) | VISA, Mastercard, JCB |
 | CVS | `"cvs"` | Convenience store code (FamilyMart only) |
-| LINE Pay | `"linePay"` | Requires separate application |
-| 3D Secure | `use3d: true` | Optional additional verification |
+| LINE Pay | `"linePay"` | Requires application; set LINE Pay token in CRM after approval |
 
-Pass non-default methods via `allowedPaymentMethods` array in checkout request.
+Pass non-default methods via `allowedPaymentMethods` array in checkout request. Enable 3D Secure with `use3d: true`.
 
 ### Subscription Specific Fields
 
@@ -176,7 +175,7 @@ Set the webhook endpoint in CRM. Oen sends POST with transaction result:
 | `amount` | number | Transaction amount |
 | `currency` | string | Currency code |
 | `orderId` | string | Your order ID (if provided) |
-| `paymentMethod` | string | card/atm/cvs |
+| `paymentMethod` | string | card / atm / cvs / linePay |
 | `subscriptionId` | string | Subscription ID (if recurring) |
 | `period` | number | Current period (if recurring) |
 | `customId` | string | Your custom data (if provided) |

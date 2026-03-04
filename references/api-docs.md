@@ -94,7 +94,7 @@ Webhook retries 3 times on failure (intervals: 2s, 4s, 6s).
 | orderId | string | If provided | Your order ID |
 | userId | string | If provided | Consumer ID |
 | customId | string | If provided | Your custom data |
-| paymentMethod | string | When purpose=charge | card / atm / cvs |
+| paymentMethod | string | When purpose=charge | card / atm / cvs / linePay |
 | paymentInfo | string/object | Optional | Card: last 4 digits; CVS: `{ cvsName, code, expiredAt }`; LINE Pay: transaction ID |
 | authCode | string | card only | Authorization code |
 | productDetails | array | If invoicing | Product details array |
@@ -265,7 +265,7 @@ Same as subscription, plus:
     "status": "charged",
     "userId": "OEN00001",
     "userName": "王小明",
-    "userEmail": "test@oen.tw",
+    "userEmail": "user@example.com",
     "orderId": "ORDER00001",
     "note": "備註",
     "createdAt": "2024-04-12T07:40:25.502Z",
@@ -450,7 +450,7 @@ Returns all transactions linked to a specific order ID. Same response format as 
     "status": "refunded",
     "userId": "OEN00001",
     "userName": "王小明",
-    "userEmail": "test@oen.tw",
+    "userEmail": "user@example.com",
     "orderId": "ORDER00001",
     "note": "客戶取消訂單",
     "createdAt": "2024-04-11T10:45:22.026Z",
