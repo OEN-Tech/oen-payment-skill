@@ -1,0 +1,43 @@
+{
+  "skill_name": "oen-payment",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "幫我用 TypeScript 串接 Oen Payment 建立一個結帳頁面，金額 1500 元，訂單編號 ORD-2024-001，成功跳轉到 https://myshop.com/success，失敗跳轉到 https://myshop.com/fail",
+      "expected_output": "TypeScript code that POSTs to /checkout with correct merchantId, amount, currency, orderId, successUrl, failureUrl, and constructs the redirect URL from the response",
+      "files": [],
+      "expectations": [
+        "Code calls POST to payment-api.oen.tw/checkout or payment-api.testing.oen.tw/checkout",
+        "Request body includes merchantId, amount (1500), currency (TWD), orderId, successUrl, failureUrl",
+        "Authorization header uses Bearer token pattern",
+        "Constructs checkout redirect URL from response data.id",
+        "Includes error handling for the API response"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Oen Payment 的 webhook 回傳 T0001 錯誤碼，這是什麼意思？我的交易金額是 500 元",
+      "expected_output": "Explanation that T0001 means transaction failed, and the hint that amount < 100 triggers failure in testing environment. Since 500 > 100 it should succeed in testing, so investigate other causes.",
+      "files": [],
+      "expectations": [
+        "Correctly identifies T0001 as 'Transaction failed' (交易失敗)",
+        "References the response code table",
+        "Does NOT incorrectly claim 500 < 100 is the issue"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "I need to create a monthly subscription checkout with Oen Payment. Amount is $300 TWD, 12 months total, order ID SUB-001. Give me the cURL command for the testing environment.",
+      "expected_output": "cURL command that POSTs to payment-api.testing.oen.tw/checkout-subscription with amount, currency, orderId, numberOfPeriods=12, and the redirect URL pattern",
+      "files": [],
+      "expectations": [
+        "Uses POST method to /checkout-subscription endpoint",
+        "Base URL is payment-api.testing.oen.tw",
+        "Includes numberOfPeriods: 12",
+        "Includes amount: 300 and currency: TWD",
+        "Includes Authorization Bearer header",
+        "Shows the subscription checkout redirect URL pattern after the API call"
+      ]
+    }
+  ]
+}

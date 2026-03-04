@@ -1,0 +1,82 @@
+[
+  {
+    "query": "我需要串接應援金流到我們的 Next.js 電商網站，想要支援信用卡跟超商繳費，後端是 Express，幫我寫 checkout 的 API route",
+    "should_trigger": true
+  },
+  {
+    "query": "hey so we're using oen payment for our nonprofit donation page and the webhook keeps returning V0001 error codes. our endpoint is set up in the CRM but it's not getting the POST. can you help debug?",
+    "should_trigger": true
+  },
+  {
+    "query": "幫我查一下 Oen Payment 退款的 API 怎麼呼叫，我有一筆 transactionHid 是 P20240620ABCD1234 需要退全額",
+    "should_trigger": true
+  },
+  {
+    "query": "I want to set up the oen-payment MCP server in my Claude Code environment. I have the merchant ID and API token from the CRM dashboard already, just need the config",
+    "should_trigger": true
+  },
+  {
+    "query": "我們 NPO 想用應援的定期定額功能讓捐款人每月自動扣款，需要用 checkout-subscription API，幫我寫一個 Python script 來建立定期定額",
+    "should_trigger": true
+  },
+  {
+    "query": "can you show me how to handle the oen payment webhook callback in my fastify server? i need to update order status when payment succeeds and send a confirmation email",
+    "should_trigger": true
+  },
+  {
+    "query": "payment-api.oen.tw 回傳 T0005 拒絕授權，客戶說他的卡沒問題，這個錯誤碼是什麼意思？我該怎麼處理？",
+    "should_trigger": true
+  },
+  {
+    "query": "I need to integrate a payment gateway for our Taiwan-based SaaS product. We're considering Oen Payment — can you walk me through the API and what test card numbers to use for development?",
+    "should_trigger": true
+  },
+  {
+    "query": "我的程式碼裡面 import 了 @OEN-Tech/oen-payment-mcp-server 但 npm install 一直失敗，好像是 GitHub Packages registry 的問題",
+    "should_trigger": true
+  },
+  {
+    "query": "幫我用 curl 測試一下 oen 金流的 checkout API，merchant ID 是 myshop，環境是 testing",
+    "should_trigger": true
+  },
+  {
+    "query": "I need to integrate Stripe payment processing into our React app. We want to support credit cards and Apple Pay, and we're using their Checkout Sessions API",
+    "should_trigger": false
+  },
+  {
+    "query": "幫我串接綠界 ECPay 的金流，我需要信用卡跟超商代碼付款，後端用 Node.js",
+    "should_trigger": false
+  },
+  {
+    "query": "我想要建一個 MCP server 來連接我自己的 REST API，用 TypeScript 寫，需要 tool 定義跟 handler",
+    "should_trigger": false
+  },
+  {
+    "query": "how do i set up recurring billing with PayPal subscriptions API? I need monthly charges for our membership site",
+    "should_trigger": false
+  },
+  {
+    "query": "幫我寫一個退款功能，使用者在前端點退款按鈕後要呼叫後端 API，然後更新資料庫狀態。我們用的是自己的金流系統",
+    "should_trigger": false
+  },
+  {
+    "query": "I need to build a webhook handler in Express that verifies Shopify HMAC signatures and processes order payment notifications",
+    "should_trigger": false
+  },
+  {
+    "query": "我想分析我們公司上個月的交易數據，有一份 CSV 檔案包含所有付款紀錄，幫我用 pandas 做統計分析和視覺化",
+    "should_trigger": false
+  },
+  {
+    "query": "can you help me set up NewebPay (藍新金流) for our e-commerce site? we need credit card and ATM transfer support in Taiwan",
+    "should_trigger": false
+  },
+  {
+    "query": "how do i implement 3D Secure authentication for credit card payments? I'm using the CyberSource API directly",
+    "should_trigger": false
+  },
+  {
+    "query": "幫我把這個 Node.js 的 payment controller 重構一下，加上 error handling 和 retry logic。這是我們自己包的 HTTP client",
+    "should_trigger": false
+  }
+]
