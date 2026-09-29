@@ -52,7 +52,7 @@
     "should_trigger": true
   },
   {
-    "query": "照著 developers.oentech.ai 上的 checkout 範例改，結果回 V0001 PRODUCT_AMOUNT_NOT_MATCH，我的 amount 有含運費跟折扣",
+    "query": "照著 developer.oen.tw 上的 checkout 範例改，結果回 V0001 PRODUCT_AMOUNT_NOT_MATCH，我的 amount 有含運費跟折扣",
     "should_trigger": true
   },
   {

@@ -1,9 +1,9 @@
 ---
 title: "錯誤處理"
-url: "https://developers.oentech.ai/developers/errors/"
+url: "https://developer.oen.tw/developers/errors/"
 ---
 
-> 來源：https://developers.oentech.ai/developers/errors/（自動產生，請勿手動修改）
+> 來源：https://developer.oen.tw/developers/errors/（自動產生，請勿手動修改）
 
 # 錯誤處理
 

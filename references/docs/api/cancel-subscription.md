@@ -1,9 +1,9 @@
 ---
 title: "取消定期定額"
-url: "https://developers.oentech.ai/api/cancel-subscription/"
+url: "https://developer.oen.tw/api/cancel-subscription/"
 ---
 
-> 來源：https://developers.oentech.ai/api/cancel-subscription/（自動產生，請勿手動修改）
+> 來源：https://developer.oen.tw/api/cancel-subscription/（自動產生，請勿手動修改）
 
 # 取消定期定額
 

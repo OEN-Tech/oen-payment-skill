@@ -1,9 +1,9 @@
 ---
 title: "環境與測試"
-url: "https://developers.oentech.ai/developers/environments/"
+url: "https://developer.oen.tw/developers/environments/"
 ---
 
-> 來源：https://developers.oentech.ai/developers/environments/（自動產生，請勿手動修改）
+> 來源：https://developer.oen.tw/developers/environments/（自動產生，請勿手動修改）
 
 # 環境與測試
 

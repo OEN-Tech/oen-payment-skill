@@ -1,9 +1,9 @@
 ---
 title: "單次付款"
-url: "https://developers.oentech.ai/developers/one-time/"
+url: "https://developer.oen.tw/developers/one-time/"
 ---
 
-> 來源：https://developers.oentech.ai/developers/one-time/（自動產生，請勿手動修改）
+> 來源：https://developer.oen.tw/developers/one-time/（自動產生，請勿手動修改）
 
 # 單次付款
 

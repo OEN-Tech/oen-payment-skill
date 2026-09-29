@@ -1,9 +1,9 @@
 ---
 title: "Subscription 物件"
-url: "https://developers.oentech.ai/api/objects/subscription/"
+url: "https://developer.oen.tw/api/objects/subscription/"
 ---
 
-> 來源：https://developers.oentech.ai/api/objects/subscription/（自動產生，請勿手動修改）
+> 來源：https://developer.oen.tw/api/objects/subscription/（自動產生，請勿手動修改）
 
 # Subscription 物件
 

@@ -125,7 +125,7 @@
       "expectations": [
         "States that the Payment MCP is an internal preview and not publicly available",
         "Does not provide an MCP config JSON, npx command, GitHub Packages registry or .npmrc token setup",
-        "Points to https://developers.oentech.ai/ai/mcp/ or suggests using this skill or /llms-full.txt instead",
+        "Points to https://developer.oen.tw/ai/mcp/ or suggests using this skill or /llms-full.txt instead",
         "Reminds the user to keep the API token in an environment variable and not paste it into AI chats"
       ]
     },

@@ -1,9 +1,9 @@
 ---
 title: "查詢交易明細"
-url: "https://developers.oentech.ai/api/get-transaction/"
+url: "https://developer.oen.tw/api/get-transaction/"
 ---
 
-> 來源：https://developers.oentech.ai/api/get-transaction/（自動產生，請勿手動修改）
+> 來源：https://developer.oen.tw/api/get-transaction/（自動產生，請勿手動修改）
 
 # 查詢交易明細
 

@@ -1,9 +1,9 @@
 ---
 title: "退款"
-url: "https://developers.oentech.ai/api/refund/"
+url: "https://developer.oen.tw/api/refund/"
 ---
 
-> 來源：https://developers.oentech.ai/api/refund/（自動產生，請勿手動修改）
+> 來源：https://developer.oen.tw/api/refund/（自動產生，請勿手動修改）
 
 # 退款
 

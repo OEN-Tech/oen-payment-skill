@@ -16,7 +16,7 @@
 
 這是一份給 AI 開發工具讀的技能檔（Skill），協助開發者串接[應援科技](https://oen.tw)的 Payment API（應援金流）。安裝後，你在 AI 工具裡提到應援金流、結帳、定期定額、退款、付款通知等需求時，AI 會自動載入串接規則與最新文件，幫你產生程式、解釋錯誤碼、檢查常見錯誤。
 
-- 內容依正式環境 v10.3.1.1 查核，文件取自[應援開發者文件站](https://developers.oentech.ai)（目前是預覽站，正式上線後改為 developers.oen.tw）。
+- 內容依正式環境 v10.3.1.1 查核，文件取自[應援開發者文件站](https://developer.oen.tw)。
 - Skill 與文件站不同時，以文件站為準。
 
 ## 包含什麼
@@ -83,7 +83,7 @@ git clone https://github.com/OEN-Tech/oen-payment-skill.git .claude/skills/oen-p
 
 - **文件站沒有列出的端點或產品**：Skill 只涵蓋 `references/docs/api/` 列出的公開端點，其他需求請聯絡應援業務或客服。需要傳送完整卡號的 API 要符合 PCI DSS，不在文件站公開。
 - **Embed 嵌入式付款、Subscription API、WooCommerce 外掛**：要先請應援開通。Skill 只附上文件站的說明頁，預設以 Payment API 回答。
-- **Payment MCP**：目前是應援內部預覽版，尚未對外開放，見[文件站說明](https://developers.oentech.ai/ai/mcp/)。
+- **Payment MCP**：目前是應援內部預覽版，尚未對外開放，見[文件站說明](https://developer.oen.tw/ai/mcp/)。
 - **測試卡號**：各網域的測試環境收單設定不同，請向應援的聯絡人索取。
 - **手續費與費率**：請到 CRM 查看，或詢問應援業務。
 
@@ -118,16 +118,7 @@ scripts/sync-docs.sh <bundle-dir>
 
 ## 維護：文件站網址
 
-文件站目前是預覽站 `developers.oentech.ai`。正式網域 developers.oen.tw 上線時，要把下列手寫檔案中的預覽網址全部換掉；`references/docs/` 重新匯出就會更新，不用手改。
-
-| 檔案 | 次數 | 位置 |
-| --- | --- | --- |
-| `SKILL.md` | 3 | 第 3 行 description 的觸發詞（換網域後會和 developers.oen.tw 重複，直接刪掉即可）、第 112 行〈不涵蓋〉的 Payment MCP 出處、第 118 行〈文件站〉 |
-| `README.md` | 5 | 第 19 行開頭說明、第 86 行〈不涵蓋〉的 Payment MCP 連結、第 121 行本段開頭、第 156、157 行〈相關資源〉 |
-| `evals/evals.json` | 1 | 第 128 行，情境 9 的期望 |
-| `evals/trigger_eval.json` | 1 | 第 55 行，`PRODUCT_AMOUNT_NOT_MATCH` 的觸發題 |
-
-換完後執行 `grep -rn 'oentech\.ai' SKILL.md README.md evals/`，應該沒有任何結果，之後就可以刪掉本段。
+文件站的網域是 `developer.oen.tw`。網域變更時，除了重新匯出 `references/docs/`，也要修改手寫檔案中的網址：`SKILL.md`（description 的觸發詞、〈不涵蓋〉的 Payment MCP 出處、〈文件站〉）、`README.md`（開頭說明、〈不涵蓋〉的 Payment MCP 連結、〈相關資源〉）、`evals/evals.json`（情境 9）、`evals/trigger_eval.json`（1 題觸發題）。
 
 ## 檔案結構
 
@@ -153,8 +144,8 @@ oen-payment-skill/
 
 ## 相關資源
 
-- [應援開發者文件站](https://developers.oentech.ai)
-- [全站純文字版（給 AI 讀）](https://developers.oentech.ai/llms-full.txt)
+- [應援開發者文件站](https://developer.oen.tw)
+- [全站純文字版（給 AI 讀）](https://developer.oen.tw/llms-full.txt)
 - [應援科技官網](https://oen.tw)
 
 ## 授權

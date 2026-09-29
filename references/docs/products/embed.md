@@ -1,9 +1,9 @@
 ---
 title: "Embed 嵌入式付款"
-url: "https://developers.oentech.ai/products/embed/"
+url: "https://developer.oen.tw/products/embed/"
 ---
 
-> 來源：https://developers.oentech.ai/products/embed/（自動產生，請勿手動修改）
+> 來源：https://developer.oen.tw/products/embed/（自動產生，請勿手動修改）
 
 # Embed 嵌入式付款
 
@@ -24,7 +24,7 @@ Embed 把應援的信用卡表單以 iframe 嵌進你的結帳頁。卡號只在
 
 ## 開通與後台設定
 
-1.  **確認線上金流已開通。** Embed 建立在線上金流之上，還沒開通的話請先完成[開通金流](https://developers.oentech.ai/merchant/activate/)。
+1.  **確認線上金流已開通。** Embed 建立在線上金流之上，還沒開通的話請先完成[開通金流](https://developer.oen.tw/merchant/activate/)。
     
 2.  **請應援開通 Embed。** 聯絡負責你的業務人員。開通後，CRM「總設定」會多出一個「OenPay Embed」分頁（網址 `/crm/setting/general?tab=embed`）。 看不到這個分頁時，確認兩件事：應援已經開通 Embed、你的帳號有 API 串接相關權限（例如「金流串接管理員」角色）。
     

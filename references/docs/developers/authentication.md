@@ -1,9 +1,9 @@
 ---
 title: "驗證與 token"
-url: "https://developers.oentech.ai/developers/authentication/"
+url: "https://developer.oen.tw/developers/authentication/"
 ---
 
-> 來源：https://developers.oentech.ai/developers/authentication/（自動產生，請勿手動修改）
+> 來源：https://developer.oen.tw/developers/authentication/（自動產生，請勿手動修改）
 
 # 驗證與 token
 
@@ -15,7 +15,7 @@ Payment API 用 CRM 產生的 token 驗證。每個網域在每個環境同時�
 2.  進入 CRM「總設定」→「開發者」分頁 →「應援金流設定」→「存取 Token」，按「產生 Token」。
 3.  立刻複製保存。離開頁面後就看不到完整的 token。
 
-需要後台管理員，或「金流串接管理員」角色。詳細步驟見[交給工程師串接前的準備](https://developers.oentech.ai/merchant/api-access/)。
+需要後台管理員，或「金流串接管理員」角色。詳細步驟見[交給工程師串接前的準備](https://developer.oen.tw/merchant/api-access/)。
 
 ## 帶上 token
 

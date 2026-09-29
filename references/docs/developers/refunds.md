@@ -1,9 +1,9 @@
 ---
 title: "退款"
-url: "https://developers.oentech.ai/developers/refunds/"
+url: "https://developer.oen.tw/developers/refunds/"
 ---
 
-> 來源：https://developers.oentech.ai/developers/refunds/（自動產生，請勿手動修改）
+> 來源：https://developer.oen.tw/developers/refunds/（自動產生，請勿手動修改）
 
 # 退款
 
@@ -89,4 +89,4 @@ url: "https://developers.oentech.ai/developers/refunds/"
 
 ## 在 CRM 退款
 
-商家也可以在 CRM 的金流明細退款，規則相同，見[商家指南的退款說明](https://developers.oentech.ai/merchant/refunds/)。
+商家也可以在 CRM 的金流明細退款，規則相同，見[商家指南的退款說明](https://developer.oen.tw/merchant/refunds/)。

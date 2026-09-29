@@ -1,9 +1,9 @@
 ---
 title: "建立預約定期定額"
-url: "https://developers.oentech.ai/api/checkout-schedule/"
+url: "https://developer.oen.tw/api/checkout-schedule/"
 ---
 
-> 來源：https://developers.oentech.ai/api/checkout-schedule/（自動產生，請勿手動修改）
+> 來源：https://developer.oen.tw/api/checkout-schedule/（自動產生，請勿手動修改）
 
 # 建立預約定期定額
 

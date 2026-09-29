@@ -1,9 +1,9 @@
 ---
 title: "名詞對照"
-url: "https://developers.oentech.ai/start/glossary/"
+url: "https://developer.oen.tw/start/glossary/"
 ---
 
-> 來源：https://developers.oentech.ai/start/glossary/（自動產生，請勿手動修改）
+> 來源：https://developer.oen.tw/start/glossary/（自動產生，請勿手動修改）
 
 # 名詞對照
 

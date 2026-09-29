@@ -1,9 +1,9 @@
 ---
 title: "上線檢查清單"
-url: "https://developers.oentech.ai/developers/go-live/"
+url: "https://developer.oen.tw/developers/go-live/"
 ---
 
-> 來源：https://developers.oentech.ai/developers/go-live/（自動產生，請勿手動修改）
+> 來源：https://developer.oen.tw/developers/go-live/（自動產生，請勿手動修改）
 
 # 上線檢查清單
 

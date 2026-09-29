@@ -1,9 +1,9 @@
 ---
 title: "建立單次付款"
-url: "https://developers.oentech.ai/api/checkout/"
+url: "https://developer.oen.tw/api/checkout/"
 ---
 
-> 來源：https://developers.oentech.ai/api/checkout/（自動產生，請勿手動修改）
+> 來源：https://developer.oen.tw/api/checkout/（自動產生，請勿手動修改）
 
 # 建立單次付款
 

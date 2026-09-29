@@ -1,9 +1,9 @@
 ---
 title: "固定 IP 白名單"
-url: "https://developers.oentech.ai/developers/ip-allowlist/"
+url: "https://developer.oen.tw/developers/ip-allowlist/"
 ---
 
-> 來源：https://developers.oentech.ai/developers/ip-allowlist/（自動產生，請勿手動修改）
+> 來源：https://developer.oen.tw/developers/ip-allowlist/（自動產生，請勿手動修改）
 
 # 固定 IP 白名單
 

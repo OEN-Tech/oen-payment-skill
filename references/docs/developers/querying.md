@@ -1,9 +1,9 @@
 ---
 title: "查詢與對帳"
-url: "https://developers.oentech.ai/developers/querying/"
+url: "https://developer.oen.tw/developers/querying/"
 ---
 
-> 來源：https://developers.oentech.ai/developers/querying/（自動產生，請勿手動修改）
+> 來源：https://developer.oen.tw/developers/querying/（自動產生，請勿手動修改）
 
 # 查詢與對帳
 
@@ -54,7 +54,7 @@ async function listAll(start, end) {
     -   你的系統是「已付款」，應援是 `failed` 或 `initiated`：查明原因，不要出貨。
     -   應援是 `charged` 或 `claimed`，你的系統不是「已付款」：補標。
     -   同一個 `orderId` 有兩筆以上成功：[退款](refunds.md)多的那筆。
-3.  **每次撥款後**：到 CRM「撥款列表」匯出撥款細項，核對手續費與撥款金額。見[查詢交易與對帳](https://developers.oentech.ai/merchant/transactions/)。
+3.  **每次撥款後**：到 CRM「撥款列表」匯出撥款細項，核對手續費與撥款金額。見[查詢交易與對帳](https://developer.oen.tw/merchant/transactions/)。
 
 ## 查詢的注意事項
 

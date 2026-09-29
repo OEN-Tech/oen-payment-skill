@@ -1,9 +1,9 @@
 ---
 title: "錯誤碼一覽"
-url: "https://developers.oentech.ai/api/error-codes/"
+url: "https://developer.oen.tw/api/error-codes/"
 ---
 
-> 來源：https://developers.oentech.ai/api/error-codes/（自動產生，請勿手動修改）
+> 來源：https://developer.oen.tw/api/error-codes/（自動產生，請勿手動修改）
 
 # 錯誤碼一覽
 

@@ -1,9 +1,9 @@
 ---
 title: "查詢商店定期購訂單列表"
-url: "https://developers.oentech.ai/api/list-subscriptions/"
+url: "https://developer.oen.tw/api/list-subscriptions/"
 ---
 
-> 來源：https://developers.oentech.ai/api/list-subscriptions/（自動產生，請勿手動修改）
+> 來源：https://developer.oen.tw/api/list-subscriptions/（自動產生，請勿手動修改）
 
 # 查詢商店定期購訂單列表
 

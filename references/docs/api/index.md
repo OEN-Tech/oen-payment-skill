@@ -1,15 +1,15 @@
 ---
 title: "API 參考"
-url: "https://developers.oentech.ai/api/"
+url: "https://developer.oen.tw/api/"
 ---
 
-> 來源：https://developers.oentech.ai/api/（自動產生，請勿手動修改）
+> 來源：https://developer.oen.tw/api/（自動產生，請勿手動修改）
 
 # API 參考
 
 這裡是 Payment API 每一支端點的完整規格。第一次串接請先看[快速開始](../developers/quickstart.md)。
 
-所有欄位、限制與錯誤碼都依正式環境 v10.3.1.1 的程式核對。也可以下載 [OpenAPI 定義檔](https://developers.oentech.ai/openapi/payment-api.json)，匯入 Postman 等工具。
+所有欄位、限制與錯誤碼都依正式環境 v10.3.1.1 的程式核對。也可以下載 [OpenAPI 定義檔](https://developer.oen.tw/openapi/payment-api.json)，匯入 Postman 等工具。
 
 ## 網址
 

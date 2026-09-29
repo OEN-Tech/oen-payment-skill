@@ -1,9 +1,9 @@
 ---
 title: "存卡與後續扣款"
-url: "https://developers.oentech.ai/developers/saved-cards/"
+url: "https://developer.oen.tw/developers/saved-cards/"
 ---
 
-> 來源：https://developers.oentech.ai/developers/saved-cards/（自動產生，請勿手動修改）
+> 來源：https://developer.oen.tw/developers/saved-cards/（自動產生，請勿手動修改）
 
 # 存卡與後續扣款
 

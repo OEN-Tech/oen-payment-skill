@@ -1,9 +1,9 @@
 ---
 title: "我該用哪一種收款方式？"
-url: "https://developers.oentech.ai/start/choose/"
+url: "https://developer.oen.tw/start/choose/"
 ---
 
-> 來源：https://developers.oentech.ai/start/choose/（自動產生，請勿手動修改）
+> 來源：https://developer.oen.tw/start/choose/（自動產生，請勿手動修改）
 
 # 我該用哪一種收款方式？
 
@@ -33,8 +33,8 @@ url: "https://developers.oentech.ai/start/choose/"
 | 付款畫面 | 應援結帳頁 | 應援結帳頁 | 你的頁面 | 見產品頁 |
 | 驗證 | CRM 產生的 token | 外掛設定頁填入金鑰 | `pk_` 與 `sk_` 金鑰 | `sub_sk_` 金鑰 |
 | 付款通知 | 沒有簽章，收到後回查 | 外掛自動處理 | 有簽章 | 有簽章 |
-| 說明 | [快速開始](../developers/quickstart.md) | [安裝與設定](https://developers.oentech.ai/merchant/woocommerce/) | [Embed](../products/embed.md) | [Subscription API](../products/subscription-api.md) |
+| 說明 | [快速開始](../developers/quickstart.md) | [安裝與設定](https://developer.oen.tw/merchant/woocommerce/) | [Embed](../products/embed.md) | [Subscription API](../products/subscription-api.md) |
 
 ## 已經在用 Payment API？
 
-Payment API 是應援主要支援的串接方式，會持續維護並加入新功能。這一版文件依正式環境 v10.3.1.1 更新，差異見[更新紀錄](https://developers.oentech.ai/changelog/)。
+Payment API 是應援主要支援的串接方式，會持續維護並加入新功能。這一版文件依正式環境 v10.3.1.1 更新，差異見[更新紀錄](https://developer.oen.tw/changelog/)。

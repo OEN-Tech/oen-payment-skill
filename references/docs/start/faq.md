@@ -1,9 +1,9 @@
 ---
 title: "常見問題"
-url: "https://developers.oentech.ai/start/faq/"
+url: "https://developer.oen.tw/start/faq/"
 ---
 
-> 來源：https://developers.oentech.ai/start/faq/（自動產生，請勿手動修改）
+> 來源：https://developer.oen.tw/start/faq/（自動產生，請勿手動修改）
 
 # 常見問題
 
@@ -11,11 +11,11 @@ url: "https://developers.oentech.ai/start/faq/"
 
 ## 開通
 
-**申請送出後要等多久？現在卡在哪一關？** 到 CRM「金流開通狀態」頁查看申請紀錄的狀態。各狀態的意思見[開通金流](https://developers.oentech.ai/merchant/activate/#%E5%AF%A9%E6%A0%B8%E7%8B%80%E6%85%8B)。需要的時間依個案而定。
+**申請送出後要等多久？現在卡在哪一關？** 到 CRM「金流開通狀態」頁查看申請紀錄的狀態。各狀態的意思見[開通金流](https://developer.oen.tw/merchant/activate/#%E5%AF%A9%E6%A0%B8%E7%8B%80%E6%85%8B)。需要的時間依個案而定。
 
 **顯示「文件未通過」怎麼辦？** 依通知補件後重新送出。有疑問請聯絡客服。
 
-**申請表為什麼沒有超商代碼、ATM、LINE Pay 可以勾？** 這三種要請應援開通，申請表只有信用卡、Apple Pay 與應碰收。見[各付款方式怎麼開通](https://developers.oentech.ai/merchant/activate/#%E5%90%84%E4%BB%98%E6%AC%BE%E6%96%B9%E5%BC%8F%E6%80%8E%E9%BA%BC%E9%96%8B%E9%80%9A)。
+**申請表為什麼沒有超商代碼、ATM、LINE Pay 可以勾？** 這三種要請應援開通，申請表只有信用卡、Apple Pay 與應碰收。見[各付款方式怎麼開通](https://developer.oen.tw/merchant/activate/#%E5%90%84%E4%BB%98%E6%AC%BE%E6%96%B9%E5%BC%8F%E6%80%8E%E9%BA%BC%E9%96%8B%E9%80%9A)。
 
 **「帳單顯示名稱」填錯了能改嗎？** 設定後無法更改，請在送出前確認。
 
@@ -23,7 +23,7 @@ url: "https://developers.oentech.ai/start/faq/"
 
 ## API 串接
 
-**後台找不到「金流API」選單或「開發者」分頁？** 網域的 API 串接還沒開啟，或你的帳號沒有權限。見[交給工程師串接前的準備](https://developers.oentech.ai/merchant/api-access/)。
+**後台找不到「金流API」選單或「開發者」分頁？** 網域的 API 串接還沒開啟，或你的帳號沒有權限。見[交給工程師串接前的準備](https://developer.oen.tw/merchant/api-access/)。
 
 **「產生 Token」按鈕是灰的？** 帳號權限不足，請管理員指派「金流串接管理員」角色。
 
@@ -37,7 +37,7 @@ url: "https://developers.oentech.ai/start/faq/"
 
 **付款通知網址可以在 API 請求裡帶嗎？** 不行，只能在 CRM 設定。請求裡多帶的欄位會被忽略。
 
-**有沒有 Postman 可以用？** 可以匯入本站的 [OpenAPI 定義檔](https://developers.oentech.ai/openapi/payment-api.json)。舊的 Postman 文件已不再更新。
+**有沒有 Postman 可以用？** 可以匯入本站的 [OpenAPI 定義檔](https://developer.oen.tw/openapi/payment-api.json)。舊的 Postman 文件已不再更新。
 
 ## 付款與結帳頁
 
@@ -59,7 +59,7 @@ url: "https://developers.oentech.ai/start/faq/"
 
 **匯出的檔案在哪裡？** 到「下載管理」，完成後 1 小時內可以下載。
 
-**「尚未付款」「已入帳」「撥款後退款」「已失效」是什麼意思？** 見[交易狀態](https://developers.oentech.ai/merchant/transactions/#%E4%BA%A4%E6%98%93%E7%8B%80%E6%85%8B)。
+**「尚未付款」「已入帳」「撥款後退款」「已失效」是什麼意思？** 見[交易狀態](https://developer.oen.tw/merchant/transactions/#%E4%BA%A4%E6%98%93%E7%8B%80%E6%85%8B)。
 
 ## 退款
 
@@ -87,7 +87,7 @@ url: "https://developers.oentech.ai/start/faq/"
 
 ## 發票
 
-**API 交易會自動開發票嗎？** 開通「應援代開電子發票」後，付款成功就會自動開立。見[電子發票](https://developers.oentech.ai/merchant/invoices/)。
+**API 交易會自動開發票嗎？** 開通「應援代開電子發票」後，付款成功就會自動開立。見[電子發票](https://developer.oen.tw/merchant/invoices/)。
 
 **發票開錯了怎麼作廢？** 後台沒有作廢功能，請聯絡客服。
 
@@ -111,7 +111,7 @@ url: "https://developers.oentech.ai/start/faq/"
 
 ## WooCommerce
 
-**Secret Key 要填哪一個？** 「OenPay Embed」分頁的 Secret Key，不是「開發者」分頁的存取 Token。見 [WooCommerce 外掛](https://developers.oentech.ai/merchant/woocommerce/)。
+**Secret Key 要填哪一個？** 「OenPay Embed」分頁的 Secret Key，不是「開發者」分頁的存取 Token。見 [WooCommerce 外掛](https://developer.oen.tw/merchant/woocommerce/)。
 
 **Webhook Secret 去哪裡拿？** 留空，存檔時外掛會自動取得。
 

@@ -1,9 +1,9 @@
 ---
 title: "付款通知內容"
-url: "https://developers.oentech.ai/api/objects/webhook/"
+url: "https://developer.oen.tw/api/objects/webhook/"
 ---
 
-> 來源：https://developers.oentech.ai/api/objects/webhook/（自動產生，請勿手動修改）
+> 來源：https://developer.oen.tw/api/objects/webhook/（自動產生，請勿手動修改）
 
 # 付款通知內容
 

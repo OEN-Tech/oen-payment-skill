@@ -1,9 +1,9 @@
 ---
 title: "定期定額"
-url: "https://developers.oentech.ai/developers/subscriptions/"
+url: "https://developer.oen.tw/developers/subscriptions/"
 ---
 
-> 來源：https://developers.oentech.ai/developers/subscriptions/（自動產生，請勿手動修改）
+> 來源：https://developer.oen.tw/developers/subscriptions/（自動產生，請勿手動修改）
 
 # 定期定額
 

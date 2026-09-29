@@ -1,9 +1,9 @@
 ---
 title: "查詢定期定額明細"
-url: "https://developers.oentech.ai/api/get-subscription/"
+url: "https://developer.oen.tw/api/get-subscription/"
 ---
 
-> 來源：https://developers.oentech.ai/api/get-subscription/（自動產生，請勿手動修改）
+> 來源：https://developer.oen.tw/api/get-subscription/（自動產生，請勿手動修改）
 
 # 查詢定期定額明細
 

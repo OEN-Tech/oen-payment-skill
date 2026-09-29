@@ -1,9 +1,9 @@
 ---
 title: "Subscription API"
-url: "https://developers.oentech.ai/products/subscription-api/"
+url: "https://developer.oen.tw/products/subscription-api/"
 ---
 
-> 來源：https://developers.oentech.ai/products/subscription-api/（自動產生，請勿手動修改）
+> 來源：https://developer.oen.tw/products/subscription-api/（自動產生，請勿手動修改）
 
 # Subscription API
 

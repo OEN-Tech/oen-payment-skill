@@ -1,6 +1,6 @@
 ---
 name: oen-payment
-description: 應援科技 OEN Payment API（應援金流）串接助手：建立結帳頁、定期定額、綁卡與 token 扣款、退款、查詢交易、接收付款通知（webhook）、解讀錯誤碼。只要使用者提到 oen payment、oen 金流、應援金流、應援 API、應援結帳、payment-api.oen.tw、payment-api.testing.oen.tw、{網域}.oen.tw/checkout、developers.oen.tw、developers.oentech.ai，或在應援的情境下要做 checkout、subscription、定期定額、refund、退款、webhook、付款通知、存卡、token 扣款、對帳，就使用這個 skill；在呼叫 payment-api.oen.tw 或應援金流的程式裡出現 checkout-subscription、checkout-schedule、checkout-token、token/transactions、payment_error、C026 時也要使用；使用者詢問應援的 Payment MCP 是否開放時也適用。Use it for OEN Payment API work — checkout pages, recurring subscriptions, saved-card token charges, refunds, webhook handlers, reconciliation and error codes. 不適用其他金流（Stripe、綠界 ECPay、直接串接藍新金流、PayPal）。
+description: 應援科技 OEN Payment API（應援金流）串接助手：建立結帳頁、定期定額、綁卡與 token 扣款、退款、查詢交易、接收付款通知（webhook）、解讀錯誤碼。只要使用者提到 oen payment、oen 金流、應援金流、應援 API、應援結帳、payment-api.oen.tw、payment-api.testing.oen.tw、{網域}.oen.tw/checkout、developer.oen.tw，或在應援的情境下要做 checkout、subscription、定期定額、refund、退款、webhook、付款通知、存卡、token 扣款、對帳，就使用這個 skill；在呼叫 payment-api.oen.tw 或應援金流的程式裡出現 checkout-subscription、checkout-schedule、checkout-token、token/transactions、payment_error、C026 時也要使用；使用者詢問應援的 Payment MCP 是否開放時也適用。Use it for OEN Payment API work — checkout pages, recurring subscriptions, saved-card token charges, refunds, webhook handlers, reconciliation and error codes. 不適用其他金流（Stripe、綠界 ECPay、直接串接藍新金流、PayPal）。
 ---
 
 # 應援 Payment API 串接助手
@@ -109,12 +109,12 @@ description: 應援科技 OEN Payment API（應援金流）串接助手：建立
 - 只涵蓋 `references/docs/api/` 列出的公開端點（一覽見 `api/index.md`）。文件沒有列出的端點或產品，不要推測端點、欄位或行為，請使用者聯絡應援業務或客服。（範圍規定）
 - 需要傳送完整卡號的 API 要符合 PCI DSS，不在文件站公開。（`api/index.md`）
 - Embed 嵌入式付款、Subscription API、WooCommerce 外掛都要先請應援開通（`start/choose.md`、`products/embed.md`、`products/subscription-api.md`）。使用者沒有說已經開通時，先用 Payment API 回答。
-- Payment MCP 是應援的內部預覽版，尚未對外開放。（https://developers.oentech.ai/ai/mcp/ ）
+- Payment MCP 是應援的內部預覽版，尚未對外開放。（https://developer.oen.tw/ai/mcp/ ）
 - 手續費與費率不寫任何數字，請使用者到 CRM 查看或詢問應援業務。（範圍規定）
 - 開通付款方式、撥款、發票作業等商家後台操作，請商家看文件站的商家指南或聯絡應援客服。（`start/faq.md`）
 
 ## 文件站
 
-- 開發者文件站：https://developers.oentech.ai （目前是預覽站，正式上線後改為 developers.oen.tw）。
+- 開發者文件站：https://developer.oen.tw
 - 要一次把完整文件交給 AI，用文件站的 `/llms-full.txt`；OpenAPI 定義檔是 `/openapi/payment-api.json`。
 - 更新 `references/docs/`：用文件站匯出的 bundle 執行 `scripts/sync-docs.sh <bundle-dir>`，見 README。

@@ -1,9 +1,9 @@
 ---
 title: "用 token 扣款"
-url: "https://developers.oentech.ai/api/token-transactions/"
+url: "https://developer.oen.tw/api/token-transactions/"
 ---
 
-> 來源：https://developers.oentech.ai/api/token-transactions/（自動產生，請勿手動修改）
+> 來源：https://developer.oen.tw/api/token-transactions/（自動產生，請勿手動修改）
 
 # 用 token 扣款
 

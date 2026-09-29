@@ -1,9 +1,9 @@
 ---
 title: "快速開始"
-url: "https://developers.oentech.ai/developers/quickstart/"
+url: "https://developer.oen.tw/developers/quickstart/"
 ---
 
-> 來源：https://developers.oentech.ai/developers/quickstart/（自動產生，請勿手動修改）
+> 來源：https://developer.oen.tw/developers/quickstart/（自動產生，請勿手動修改）
 
 # 快速開始
 
@@ -12,7 +12,7 @@ url: "https://developers.oentech.ai/developers/quickstart/"
 ## 開始前
 
 -   **網域名稱**：例如應援頁是 `ming.oen.tw`，網域名稱就是 `ming`。以下範例都用 `ming`，請換成你的。
--   **測試環境的 token**：在測試環境 CRM（`https://{網域名稱}.testing.oen.tw/crm`）的「總設定」→「開發者」→「應援金流設定」產生。還沒有測試環境帳號請請商家聯絡應援。詳見[交給工程師串接前的準備](https://developers.oentech.ai/merchant/api-access/)。
+-   **測試環境的 token**：在測試環境 CRM（`https://{網域名稱}.testing.oen.tw/crm`）的「總設定」→「開發者」→「應援金流設定」產生。還沒有測試環境帳號請請商家聯絡應援。詳見[交給工程師串接前的準備](https://developer.oen.tw/merchant/api-access/)。
 -   **能接收 HTTPS 的網址**：付款通知會送到這裡。本機開發可以用 tunnel 工具取得公開的 https 網址，再填到 CRM 的「交易資料回傳網址位置」。
 
 > 注意

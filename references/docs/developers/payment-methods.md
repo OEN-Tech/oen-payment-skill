@@ -1,9 +1,9 @@
 ---
 title: "付款方式"
-url: "https://developers.oentech.ai/developers/payment-methods/"
+url: "https://developer.oen.tw/developers/payment-methods/"
 ---
 
-> 來源：https://developers.oentech.ai/developers/payment-methods/（自動產生，請勿手動修改）
+> 來源：https://developer.oen.tw/developers/payment-methods/（自動產生，請勿手動修改）
 
 # 付款方式
 
@@ -71,4 +71,4 @@ url: "https://developers.oentech.ai/developers/payment-methods/"
 
 ## 商家要先開通
 
-各付款方式的開通方式，請把[開通金流與付款方式](https://developers.oentech.ai/merchant/activate/)轉給商家。
+各付款方式的開通方式，請把[開通金流與付款方式](https://developer.oen.tw/merchant/activate/)轉給商家。
