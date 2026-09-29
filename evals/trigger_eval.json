@@ -40,6 +40,26 @@
     "should_trigger": true
   },
   {
+    "query": "payment-api.oen.tw 在正式環境一直回 403 Forbidden，測試環境明明都正常，是不是正式的 token 有問題？",
+    "should_trigger": true
+  },
+  {
+    "query": "會員已經在應援綁好卡了，我拿到 token 之後要怎麼用 token/transactions 每次依用量扣不同金額？逾時的話可以直接重送嗎",
+    "should_trigger": true
+  },
+  {
+    "query": "our nightly billing job calls oen's /token/transactions and just got a 409 with code C026 and retryable false. should the job retry it or charge again with a new orderId?",
+    "should_trigger": true
+  },
+  {
+    "query": "照著 developers.oentech.ai 上的 checkout 範例改，結果回 V0001 PRODUCT_AMOUNT_NOT_MATCH，我的 amount 有含運費跟折扣",
+    "should_trigger": true
+  },
+  {
+    "query": "應援的 LINE Pay 交易可以用 API 退款嗎？還是只能到 CRM 後台退？超商代碼已經繳費的那筆又要怎麼退",
+    "should_trigger": true
+  },
+  {
     "query": "I need to integrate Stripe payment processing into our React app. We want to support credit cards and Apple Pay, and we're using their Checkout Sessions API",
     "should_trigger": false
   },
@@ -77,6 +97,14 @@
   },
   {
     "query": "幫我把這個 Node.js 的 payment controller 重構一下，加上 error handling 和 retry logic。這是我們自己包的 HTTP client",
+    "should_trigger": false
+  },
+  {
+    "query": "我們直接跟 LINE Pay 簽約，沒有透過其他金流商。幫我用 Node.js 產生 LINE Pay Online API v3 request 的 X-LINE-Authorization 簽章",
+    "should_trigger": false
+  },
+  {
+    "query": "我們的應援頁要辦一場路跑活動，想在報名表單多加一個 T-shirt 尺寸欄位，CRM 後台要去哪裡設定？",
     "should_trigger": false
   }
 ]

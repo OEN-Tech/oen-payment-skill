@@ -4,39 +4,153 @@
     {
       "id": 1,
       "prompt": "幫我用 TypeScript 串接 Oen Payment 建立一個結帳頁面，金額 1500 元，訂單編號 ORD-2024-001，成功跳轉到 https://myshop.com/success，失敗跳轉到 https://myshop.com/fail",
-      "expected_output": "TypeScript code that POSTs to /checkout with correct merchantId, amount, currency, orderId, successUrl, failureUrl, and constructs the redirect URL from the response",
+      "expected_output": "TypeScript code that POSTs to /checkout on the testing host with merchantId, amount 1500, orderId, successUrl, failureUrl and a productDetails array summing to 1500, reads the token from an environment variable, builds the checkout page URL from data.id, and explains the 5-minute validity and that successUrl carries no parameters",
       "files": [],
       "expectations": [
-        "Code calls POST to payment-api.oen.tw/checkout or payment-api.testing.oen.tw/checkout",
-        "Request body includes merchantId, amount (1500), currency (TWD), orderId, successUrl, failureUrl",
-        "Authorization header uses Bearer token pattern",
-        "Constructs checkout redirect URL from response data.id",
-        "Includes error handling for the API response"
+        "Code calls POST /checkout on https://payment-api.testing.oen.tw (or a configurable base URL that defaults to the testing host)",
+        "Request body includes merchantId, amount (1500), orderId (ORD-2024-001), successUrl and failureUrl",
+        "Request body includes productDetails; every item has productionCode, description, quantity, unit and unitPrice, and the sum of quantity × unitPrice equals exactly 1500",
+        "currency is not presented as required (it may be omitted or set to TWD)",
+        "Authorization header is 'Bearer <token>' with the token read from an environment variable (e.g. OEN_API_TOKEN), not hard-coded",
+        "Builds the checkout page URL as https://{merchantId}.testing.oen.tw/checkout/{data.id} and keeps data.id and data.transactionHid with the order",
+        "Mentions that the checkout page is valid for 5 minutes from the API call, so it should be created when the customer clicks pay",
+        "Points out that successUrl receives no parameters and is not proof of payment, and suggests putting the order number in the URL",
+        "Error handling checks the HTTP status as well as the response code (a production 403 has no code field)"
       ]
     },
     {
       "id": 2,
-      "prompt": "Oen Payment 的 webhook 回傳 T0001 錯誤碼，這是什麼意思？我的交易金額是 500 元",
-      "expected_output": "Explanation that T0001 means transaction failed, and the hint that amount < 100 triggers failure in testing environment. Since 500 > 100 it should succeed in testing, so investigate other causes.",
+      "prompt": "消費者用應援金流的結帳頁刷卡後被導回我們的 failureUrl，網址後面多了 payment_error=T0004，這筆金額是 500 元。這是什麼意思？是不是測試環境金額太小才失敗？",
+      "expected_output": "Explanation that payment_error=T0004 means insufficient credit, that there is no amount-based success/failure rule in OEN's testing environment, that the redirect code is only for display and the result should be confirmed by webhook or query, and that test cards come from the OEN contact",
       "files": [],
       "expectations": [
-        "Correctly identifies T0001 as 'Transaction failed' (交易失敗)",
-        "References the response code table",
-        "Does NOT incorrectly claim 500 < 100 is the issue"
+        "Identifies T0004 as insufficient credit limit (額度不足) and suggests the customer use another card",
+        "States that OEN has no rule where the amount decides success or failure in the testing environment; results depend on the acquirer's test system",
+        "Says the payment_error value is for showing a message and the actual result should be confirmed with the payment notification or GET /transactions/{id} (or GET /order/{orderId}/transactions)",
+        "Says test card numbers should be requested from the OEN contact and does not list any specific test card numbers"
       ]
     },
     {
       "id": 3,
       "prompt": "I need to create a monthly subscription checkout with Oen Payment. Amount is $300 TWD, 12 months total, order ID SUB-001. Give me the cURL command for the testing environment.",
-      "expected_output": "cURL command that POSTs to payment-api.testing.oen.tw/checkout-subscription with amount, currency, orderId, numberOfPeriods=12, and the redirect URL pattern",
+      "expected_output": "cURL command that POSTs to payment-api.testing.oen.tw/checkout-subscription with merchantId, amount 300, orderId, numberOfPeriods 12, productDetails summing to 300, success/failure URLs and a Bearer token from an environment variable, followed by the subscription checkout page URL pattern",
       "files": [],
       "expectations": [
-        "Uses POST method to /checkout-subscription endpoint",
-        "Base URL is payment-api.testing.oen.tw",
-        "Includes numberOfPeriods: 12",
-        "Includes amount: 300 and currency: TWD",
-        "Includes Authorization Bearer header",
-        "Shows the subscription checkout redirect URL pattern after the API call"
+        "Uses POST to https://payment-api.testing.oen.tw/checkout-subscription",
+        "Body includes merchantId, amount 300, orderId SUB-001, numberOfPeriods 12, successUrl and failureUrl",
+        "Body includes productDetails whose quantity × unitPrice sum equals exactly 300",
+        "Authorization header uses Bearer with an environment variable such as $OEN_API_TOKEN instead of a literal token",
+        "Shows the redirect URL https://{merchantId}.testing.oen.tw/checkout/subscription/{id} built from data.id",
+        "Does not add paymentInterval or startDate to /checkout-subscription (they belong to /checkout-schedule)",
+        "Mentions that failed renewals are not retried by default and a failed period stops the subscription unless retry is enabled in CRM"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "我們用應援金流結帳。購物車有商品 A 單價 800 元買 1 件、商品 B 單價 350 元買 2 件，用了一張折 100 元的折價券，另外運費 60 元，實付 1460 元。幫我用 Node.js 寫建立結帳的 request body，之前一直回 V0001。",
+      "expected_output": "A /checkout request body with amount 1460 and productDetails that include the shipping fee as an item and absorb the discount so that the quantity × unitPrice total is exactly 1460, with integer values and an explanation of PRODUCT_AMOUNT_NOT_MATCH",
+      "files": [],
+      "expectations": [
+        "Request body sets amount to 1460",
+        "The sum of quantity × unitPrice across productDetails equals exactly 1460",
+        "Shipping (60) is represented in productDetails, for example as its own item, rather than being left out",
+        "The 100 discount is reflected in the item lines (for example spread into unit prices or as an adjusted line) so the total matches the amount actually paid",
+        "All quantity and unitPrice values are integers and quantity is at least 1",
+        "Explains that productDetails is required and a mismatch returns 400 V0001 (PRODUCT_AMOUNT_NOT_MATCH)"
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "幫我用 TypeScript + Express 寫應援金流的付款通知（webhook）接收端：付款成功就把訂單標成已付款並寄確認信給客人。",
+      "expected_output": "An Express handler that returns 2xx immediately, processes charge notifications in the background by re-querying GET /transactions/{id}, verifies orderId and amount, treats charged and claimed as paid, waits on charging, and is idempotent; plus a note about the missing signature, the 3 delivery attempts and a reconciliation job",
+      "files": [],
+      "expectations": [
+        "Returns HTTP 2xx quickly (well within 10 seconds) and moves the query, order update and email to background work",
+        "Does not trust the notification body: calls GET /transactions/{id} with the notification's id and uses the queried status",
+        "Checks that the queried transaction matches the local order by orderId and amount before marking it paid",
+        "Treats both charged and claimed as paid",
+        "Does not treat charging (which has no success field) as a failure; it waits for the next notification",
+        "Branches on purpose and only handles charge notifications as order payments",
+        "Makes marking paid and sending the email safe to run more than once, because notifications can repeat or arrive out of order",
+        "States that notifications are unsigned and are sent at most 3 times with no resend, and recommends a periodic job using GET /order/{orderId}/transactions for orders without a result",
+        "Does not invent signature or HMAC header verification for Payment API notifications"
+      ]
+    },
+    {
+      "id": 6,
+      "prompt": "我們有三筆應援金流的交易要退款：P20260928AAAA0001 是 LINE Pay 付的 800 元，要全額退；P20260928BBBB0002 是超商代碼、客人已經繳費的 500 元；P20260928CCCC0003 是信用卡 1200 元，只退 600 元。三筆都沒有開電子發票。要怎麼用 API 退？",
+      "expected_output": "Three POST /refunds/{transactionHid} calls: LINE Pay refunded via API with no remitInfo, the paid CVS refund with a complete remitInfo that goes to refunding, and a partial card refund with amount 600 plus a warning that the rest can never be refunded",
+      "files": [],
+      "expectations": [
+        "Uses POST /refunds/{transactionHid} with the P-prefixed transaction numbers and merchantId in the body",
+        "Refunds the LINE Pay transaction through the API without remitInfo and does not claim the API can only refund credit cards",
+        "For the paid CVS transaction, includes remitInfo with bankCode, bankName, branchCode, branchName, account and accountName, and says the status becomes refunding until OEN remits the money",
+        "For the card transaction, sends amount 600 and warns that each transaction can be refunded only once, so the remaining 600 cannot be refunded later",
+        "For the full LINE Pay refund, either omits amount (full refund) or sends 800",
+        "Does not tell the user that CVS refunds can only be done in the CRM"
+      ]
+    },
+    {
+      "id": 7,
+      "prompt": "我用應援的 POST /token/transactions 扣會員月費 990 元，回 HTTP 409，body 是 {\"code\":\"C026\",\"data\":{},\"message\":\"PAYMENT_STATUS_UNKNOWN\",\"retryable\":false}。我們的程式遇到非 200 就自動重試 3 次，這樣可以嗎？",
+      "expected_output": "No: C026 means the payment outcome is unknown and the charge may already have happened; the Payment API has no Idempotency-Key, so retrying or re-charging with a new order can charge twice. Query first, wait while charging, contact OEN if it stays charging, and change the retry logic",
+      "files": [],
+      "expectations": [
+        "Says not to retry and not to create a new order to charge again, because the charge may already have happened",
+        "States that the Payment API has no Idempotency-Key, so sending the same token charge twice charges twice",
+        "Recommends checking the result later with GET /order/{orderId}/transactions or GET /transactions/{id}, and contacting OEN with the transaction number if it stays charging",
+        "Recommends changing the generic retry: for timeouts, 504 or 409 C026 on token charges, query first and resend only when no transaction exists or it is failed",
+        "Does not suggest adding an Idempotency-Key header as the fix"
+      ]
+    },
+    {
+      "id": 8,
+      "prompt": "應援 Payment API 在測試環境都正常，切到正式環境 payment-api.oen.tw 之後每個請求都回 HTTP 403，body 是 {\"message\":\"Forbidden\"}。token 已經換成正式環境 CRM 產生的了，我們跑在 AWS Lambda 上。",
+      "expected_output": "Diagnosis that production only accepts allowlisted fixed IPs (403 with no code), the testing environment has no allowlist, and Lambda needs a fixed egress IP (NAT Gateway) that the merchant registers with OEN",
+      "files": [],
+      "expectations": [
+        "Identifies the production fixed IP allowlist as the cause, not the token",
+        "Explains that a 403 whose body has no code field means the IP is not allowlisted, while token problems return 401 with code A0001",
+        "Explains that the testing environment has no allowlist, which is why testing worked",
+        "Says Lambda egress IPs change and recommends a fixed egress such as a NAT Gateway, registering every egress IP",
+        "Says the merchant must apply to OEN customer service or sales with the domain and IP list, then verify with a query API call",
+        "Does not recommend regenerating the token as the fix"
+      ]
+    },
+    {
+      "id": 9,
+      "prompt": "I want to set up the oen-payment MCP server in Claude Code. I already have the merchant ID and API token from the CRM — just give me the MCP config JSON and the npm registry setup.",
+      "expected_output": "Explanation that the Payment MCP is an internal preview that is not publicly available, with no install steps, pointing to the docs page and suggesting the skill or llms-full.txt instead, plus a reminder not to paste the token into the chat",
+      "files": [],
+      "expectations": [
+        "States that the Payment MCP is an internal preview and not publicly available",
+        "Does not provide an MCP config JSON, npx command, GitHub Packages registry or .npmrc token setup",
+        "Points to https://developers.oentech.ai/ai/mcp/ or suggests using this skill or /llms-full.txt instead",
+        "Reminds the user to keep the API token in an environment variable and not paste it into AI chats"
+      ]
+    },
+    {
+      "id": 10,
+      "prompt": "要在測試環境測應援金流的信用卡付款，測試卡號是哪幾組？聽說金額大於 100 元就會成功、小於 100 元會失敗？",
+      "expected_output": "Answer that test card numbers must be requested from the OEN contact and that the amount rule is not an OEN rule, without listing any card numbers",
+      "files": [],
+      "expectations": [
+        "Says test card numbers must be requested from the OEN contact because each domain's test acquirer settings differ",
+        "States that the 'over 100 succeeds, under 100 fails' rule is not an OEN rule",
+        "Does not list any specific test card numbers",
+        "Mentions a practical testing note from the docs, such as using a future expiry date, letting the page sit past 5 minutes to test the timeout, or asking OEN to simulate CVS/ATM payment"
+      ]
+    },
+    {
+      "id": 11,
+      "prompt": "應援有沒有 Hosted Checkout 的 API？我想直接在自己的頁面收卡號再丟給應援扣款，要用哪支端點？",
+      "expected_output": "Explanation that Hosted Checkout and APIs that send full card numbers are not public, that the public Payment API uses the OEN checkout page (or the saved-card token flow), and that Embed needs activation; the user should contact OEN sales for special needs",
+      "files": [],
+      "expectations": [
+        "States that Hosted Checkout is not public and that APIs sending full card numbers require PCI DSS and are not public",
+        "Does not invent endpoints or request fields for sending card numbers",
+        "Offers the public alternatives: POST /checkout with the OEN checkout page, or /checkout-token plus /token/transactions for saved cards",
+        "Mentions Embed as an option that must be activated by OEN first, and suggests contacting OEN sales"
       ]
     }
   ]
