@@ -1,0 +1,242 @@
+{
+  "generatedAt": "2026-09-29T15:02:43.770Z",
+  "siteUrl": "https://developers.oentech.ai",
+  "sourceCommit": "712f56c",
+  "linksRewritten": true,
+  "pages": [
+    {
+      "path": "ai/index.md",
+      "title": "用 AI 助手串接",
+      "url": "https://developers.oentech.ai/ai/",
+      "bytes": 2567
+    },
+    {
+      "path": "ai/mcp.md",
+      "title": "Payment MCP",
+      "url": "https://developers.oentech.ai/ai/mcp/",
+      "bytes": 1965
+    },
+    {
+      "path": "ai/skill.md",
+      "title": "Payment Skill",
+      "url": "https://developers.oentech.ai/ai/skill/",
+      "bytes": 2388
+    },
+    {
+      "path": "api/cancel-subscription.md",
+      "title": "取消定期定額",
+      "url": "https://developers.oentech.ai/api/cancel-subscription/",
+      "bytes": 4308
+    },
+    {
+      "path": "api/checkout-schedule.md",
+      "title": "建立預約定期定額",
+      "url": "https://developers.oentech.ai/api/checkout-schedule/",
+      "bytes": 10292
+    },
+    {
+      "path": "api/checkout-subscription.md",
+      "title": "建立定期定額",
+      "url": "https://developers.oentech.ai/api/checkout-subscription/",
+      "bytes": 9625
+    },
+    {
+      "path": "api/checkout-token.md",
+      "title": "建立綁卡頁",
+      "url": "https://developers.oentech.ai/api/checkout-token/",
+      "bytes": 5159
+    },
+    {
+      "path": "api/checkout.md",
+      "title": "建立單次付款",
+      "url": "https://developers.oentech.ai/api/checkout/",
+      "bytes": 10978
+    },
+    {
+      "path": "api/error-codes.md",
+      "title": "錯誤碼一覽",
+      "url": "https://developers.oentech.ai/api/error-codes/",
+      "bytes": 4087
+    },
+    {
+      "path": "api/get-subscription.md",
+      "title": "查詢定期定額明細",
+      "url": "https://developers.oentech.ai/api/get-subscription/",
+      "bytes": 3209
+    },
+    {
+      "path": "api/get-transaction.md",
+      "title": "查詢交易明細",
+      "url": "https://developers.oentech.ai/api/get-transaction/",
+      "bytes": 4007
+    },
+    {
+      "path": "api/index.md",
+      "title": "API 參考",
+      "url": "https://developers.oentech.ai/api/",
+      "bytes": 5343
+    },
+    {
+      "path": "api/list-order-transactions.md",
+      "title": "用訂單編號查詢交易",
+      "url": "https://developers.oentech.ai/api/list-order-transactions/",
+      "bytes": 3567
+    },
+    {
+      "path": "api/list-subscriptions.md",
+      "title": "查詢商店定期購訂單列表",
+      "url": "https://developers.oentech.ai/api/list-subscriptions/",
+      "bytes": 4393
+    },
+    {
+      "path": "api/list-transactions.md",
+      "title": "查詢交易列表",
+      "url": "https://developers.oentech.ai/api/list-transactions/",
+      "bytes": 4240
+    },
+    {
+      "path": "api/objects/subscription.md",
+      "title": "Subscription 物件",
+      "url": "https://developers.oentech.ai/api/objects/subscription/",
+      "bytes": 2797
+    },
+    {
+      "path": "api/objects/transaction.md",
+      "title": "Transaction 物件",
+      "url": "https://developers.oentech.ai/api/objects/transaction/",
+      "bytes": 5369
+    },
+    {
+      "path": "api/objects/webhook.md",
+      "title": "付款通知內容",
+      "url": "https://developers.oentech.ai/api/objects/webhook/",
+      "bytes": 10431
+    },
+    {
+      "path": "api/refund.md",
+      "title": "退款",
+      "url": "https://developers.oentech.ai/api/refund/",
+      "bytes": 6995
+    },
+    {
+      "path": "api/token-subscriptions.md",
+      "title": "用 token 建立定期定額",
+      "url": "https://developers.oentech.ai/api/token-subscriptions/",
+      "bytes": 9114
+    },
+    {
+      "path": "api/token-transactions.md",
+      "title": "用 token 扣款",
+      "url": "https://developers.oentech.ai/api/token-transactions/",
+      "bytes": 8728
+    },
+    {
+      "path": "developers/authentication.md",
+      "title": "驗證與 token",
+      "url": "https://developers.oentech.ai/developers/authentication/",
+      "bytes": 2709
+    },
+    {
+      "path": "developers/environments.md",
+      "title": "環境與測試",
+      "url": "https://developers.oentech.ai/developers/environments/",
+      "bytes": 3229
+    },
+    {
+      "path": "developers/errors.md",
+      "title": "錯誤處理",
+      "url": "https://developers.oentech.ai/developers/errors/",
+      "bytes": 4280
+    },
+    {
+      "path": "developers/go-live.md",
+      "title": "上線檢查清單",
+      "url": "https://developers.oentech.ai/developers/go-live/",
+      "bytes": 3189
+    },
+    {
+      "path": "developers/ip-allowlist.md",
+      "title": "固定 IP 白名單",
+      "url": "https://developers.oentech.ai/developers/ip-allowlist/",
+      "bytes": 2285
+    },
+    {
+      "path": "developers/one-time.md",
+      "title": "單次付款",
+      "url": "https://developers.oentech.ai/developers/one-time/",
+      "bytes": 6315
+    },
+    {
+      "path": "developers/payment-methods.md",
+      "title": "付款方式",
+      "url": "https://developers.oentech.ai/developers/payment-methods/",
+      "bytes": 3751
+    },
+    {
+      "path": "developers/querying.md",
+      "title": "查詢與對帳",
+      "url": "https://developers.oentech.ai/developers/querying/",
+      "bytes": 3535
+    },
+    {
+      "path": "developers/quickstart.md",
+      "title": "快速開始",
+      "url": "https://developers.oentech.ai/developers/quickstart/",
+      "bytes": 12301
+    },
+    {
+      "path": "developers/refunds.md",
+      "title": "退款",
+      "url": "https://developers.oentech.ai/developers/refunds/",
+      "bytes": 3840
+    },
+    {
+      "path": "developers/saved-cards.md",
+      "title": "存卡與後續扣款",
+      "url": "https://developers.oentech.ai/developers/saved-cards/",
+      "bytes": 4144
+    },
+    {
+      "path": "developers/subscriptions.md",
+      "title": "定期定額",
+      "url": "https://developers.oentech.ai/developers/subscriptions/",
+      "bytes": 5662
+    },
+    {
+      "path": "developers/webhooks.md",
+      "title": "付款通知（webhook）",
+      "url": "https://developers.oentech.ai/developers/webhooks/",
+      "bytes": 5255
+    },
+    {
+      "path": "products/embed.md",
+      "title": "Embed 嵌入式付款",
+      "url": "https://developers.oentech.ai/products/embed/",
+      "bytes": 21518
+    },
+    {
+      "path": "products/subscription-api.md",
+      "title": "Subscription API",
+      "url": "https://developers.oentech.ai/products/subscription-api/",
+      "bytes": 17018
+    },
+    {
+      "path": "start/choose.md",
+      "title": "我該用哪一種收款方式？",
+      "url": "https://developers.oentech.ai/start/choose/",
+      "bytes": 2269
+    },
+    {
+      "path": "start/faq.md",
+      "title": "常見問題",
+      "url": "https://developers.oentech.ai/start/faq/",
+      "bytes": 7203
+    },
+    {
+      "path": "start/glossary.md",
+      "title": "名詞對照",
+      "url": "https://developers.oentech.ai/start/glossary/",
+      "bytes": 3882
+    }
+  ]
+}
