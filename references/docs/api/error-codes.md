@@ -30,7 +30,7 @@ url: "https://developers.oentech.ai/api/error-codes/"
 
 ## 結帳頁導回的 payment_error
 
-消費者付款失敗或逾時時，會被導回你的 `failureUrl`，網址加上 `payment_error=<代碼>`，例如 `https://shop.example.com/payment/failure?order=A001&payment_error=T0004`。
+消費者付款失敗或逾時時，會被導回你的 `failureUrl`，網址加上 `payment_error=<代碼>`，例如 `https://shop.example.com/payment/failure/A001?payment_error=T0004`。
 
 | 錯誤碼 | HTTP | 意思 | 建議處理 |
 | --- | --- | --- | --- |

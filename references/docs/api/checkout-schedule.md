@@ -69,7 +69,7 @@ curl -X POST "https://payment-api.testing.oen.tw/checkout-schedule" \
   "startDate": "2026/10/15",
   "orderId": "SUB20260928002",
   "successUrl": "https://shop.example.com/subscribe/success?order=SUB20260928002",
-  "failureUrl": "https://shop.example.com/subscribe/failure?order=SUB20260928002",
+  "failureUrl": "https://shop.example.com/subscribe/failure/SUB20260928002",
   "userName": "王小明",
   "userEmail": "ming@example.com",
   "productDetails": [
@@ -99,7 +99,7 @@ const res = await fetch("https://payment-api.testing.oen.tw/checkout-schedule", 
     "startDate": "2026/10/15",
     "orderId": "SUB20260928002",
     "successUrl": "https://shop.example.com/subscribe/success?order=SUB20260928002",
-    "failureUrl": "https://shop.example.com/subscribe/failure?order=SUB20260928002",
+    "failureUrl": "https://shop.example.com/subscribe/failure/SUB20260928002",
     "userName": "王小明",
     "userEmail": "ming@example.com",
     "productDetails": [
@@ -138,7 +138,7 @@ curl_setopt_array($ch, [
         'startDate' => '2026/10/15',
         'orderId' => 'SUB20260928002',
         'successUrl' => 'https://shop.example.com/subscribe/success?order=SUB20260928002',
-        'failureUrl' => 'https://shop.example.com/subscribe/failure?order=SUB20260928002',
+        'failureUrl' => 'https://shop.example.com/subscribe/failure/SUB20260928002',
         'userName' => '王小明',
         'userEmail' => 'ming@example.com',
         'productDetails' => [
@@ -175,7 +175,7 @@ res = requests.request(
         "startDate": "2026/10/15",
         "orderId": "SUB20260928002",
         "successUrl": "https://shop.example.com/subscribe/success?order=SUB20260928002",
-        "failureUrl": "https://shop.example.com/subscribe/failure?order=SUB20260928002",
+        "failureUrl": "https://shop.example.com/subscribe/failure/SUB20260928002",
         "userName": "王小明",
         "userEmail": "ming@example.com",
         "productDetails": [

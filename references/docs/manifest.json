@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-09-29T15:02:43.770Z",
+  "generatedAt": "2026-09-29T15:28:46.221Z",
   "siteUrl": "https://developers.oentech.ai",
-  "sourceCommit": "712f56c",
+  "sourceCommit": "29466bc",
   "linksRewritten": true,
   "pages": [
     {
@@ -14,31 +14,31 @@
       "path": "api/checkout-schedule.md",
       "title": "建立預約定期定額",
       "url": "https://developers.oentech.ai/api/checkout-schedule/",
-      "bytes": 10292
+      "bytes": 10268
     },
     {
       "path": "api/checkout-subscription.md",
       "title": "建立定期定額",
       "url": "https://developers.oentech.ai/api/checkout-subscription/",
-      "bytes": 9625
+      "bytes": 9601
     },
     {
       "path": "api/checkout-token.md",
       "title": "建立綁卡頁",
       "url": "https://developers.oentech.ai/api/checkout-token/",
-      "bytes": 5159
+      "bytes": 5131
     },
     {
       "path": "api/checkout.md",
       "title": "建立單次付款",
       "url": "https://developers.oentech.ai/api/checkout/",
-      "bytes": 10978
+      "bytes": 10954
     },
     {
       "path": "api/error-codes.md",
       "title": "錯誤碼一覽",
       "url": "https://developers.oentech.ai/api/error-codes/",
-      "bytes": 4087
+      "bytes": 4081
     },
     {
       "path": "api/get-subscription.md",
@@ -164,7 +164,7 @@
       "path": "developers/quickstart.md",
       "title": "快速開始",
       "url": "https://developers.oentech.ai/developers/quickstart/",
-      "bytes": 12301
+      "bytes": 12277
     },
     {
       "path": "developers/refunds.md",

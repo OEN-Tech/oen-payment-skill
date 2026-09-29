@@ -66,7 +66,7 @@ curl -X POST "https://payment-api.testing.oen.tw/checkout" \
   "currency": "TWD",
   "orderId": "A20260928001",
   "successUrl": "https://shop.example.com/payment/success?order=A20260928001",
-  "failureUrl": "https://shop.example.com/payment/failure?order=A20260928001",
+  "failureUrl": "https://shop.example.com/payment/failure/A20260928001",
   "userName": "王小明",
   "userEmail": "ming@example.com",
   "productDetails": [
@@ -98,7 +98,7 @@ const res = await fetch("https://payment-api.testing.oen.tw/checkout", {
     "currency": "TWD",
     "orderId": "A20260928001",
     "successUrl": "https://shop.example.com/payment/success?order=A20260928001",
-    "failureUrl": "https://shop.example.com/payment/failure?order=A20260928001",
+    "failureUrl": "https://shop.example.com/payment/failure/A20260928001",
     "userName": "王小明",
     "userEmail": "ming@example.com",
     "productDetails": [
@@ -139,7 +139,7 @@ curl_setopt_array($ch, [
         'currency' => 'TWD',
         'orderId' => 'A20260928001',
         'successUrl' => 'https://shop.example.com/payment/success?order=A20260928001',
-        'failureUrl' => 'https://shop.example.com/payment/failure?order=A20260928001',
+        'failureUrl' => 'https://shop.example.com/payment/failure/A20260928001',
         'userName' => '王小明',
         'userEmail' => 'ming@example.com',
         'productDetails' => [
@@ -178,7 +178,7 @@ res = requests.request(
         "currency": "TWD",
         "orderId": "A20260928001",
         "successUrl": "https://shop.example.com/payment/success?order=A20260928001",
-        "failureUrl": "https://shop.example.com/payment/failure?order=A20260928001",
+        "failureUrl": "https://shop.example.com/payment/failure/A20260928001",
         "userName": "王小明",
         "userEmail": "ming@example.com",
         "productDetails": [

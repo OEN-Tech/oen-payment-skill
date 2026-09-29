@@ -47,7 +47,7 @@ curl -X POST "https://payment-api.testing.oen.tw/checkout" \
     "amount": 1200,
     "orderId": "A20260928001",
     "successUrl": "https://shop.example.com/payment/success?order=A20260928001",
-    "failureUrl": "https://shop.example.com/payment/failure?order=A20260928001",
+    "failureUrl": "https://shop.example.com/payment/failure/A20260928001",
     "productDetails": [
       { "productionCode": "SKU-001", "description": "手沖咖啡豆 200g", "quantity": 2, "unit": "包", "unitPrice": 600 }
     ]
@@ -70,7 +70,7 @@ export async function createCheckout(order) {
       amount: order.total, // 必須等於下面品項的合計
       orderId: order.id,
       successUrl: `https://shop.example.com/payment/success?order=${order.id}`,
-      failureUrl: `https://shop.example.com/payment/failure?order=${order.id}`,
+      failureUrl: `https://shop.example.com/payment/failure/${order.id}`,
       productDetails: order.items.map((item) => ({
         productionCode: item.sku,
         description: item.name,
@@ -110,7 +110,7 @@ function createCheckout(array $order): string
             'amount' => $order['total'], // 必須等於品項合計
             'orderId' => $order['id'],
             'successUrl' => 'https://shop.example.com/payment/success?order=' . $order['id'],
-            'failureUrl' => 'https://shop.example.com/payment/failure?order=' . $order['id'],
+            'failureUrl' => 'https://shop.example.com/payment/failure/' . $order['id'],
             'productDetails' => array_map(fn ($item) => [
                 'productionCode' => $item['sku'],
                 'description' => $item['name'],
@@ -150,7 +150,7 @@ def create_checkout(order: dict) -> str:
             "amount": order["total"],  # 必須等於品項合計
             "orderId": order["id"],
             "successUrl": f"https://shop.example.com/payment/success?order={order['id']}",
-            "failureUrl": f"https://shop.example.com/payment/failure?order={order['id']}",
+            "failureUrl": f"https://shop.example.com/payment/failure/{order['id']}",
             "productDetails": [
                 {
                     "productionCode": item["sku"],
@@ -191,7 +191,7 @@ def create_checkout(order: dict) -> str:
 把消費者導到 `https://ming.testing.oen.tw/checkout/2HhndgEquCbDzC5OyVxWSGZmd2l`。消費者付款後：
 
 -   成功時回到 `successUrl`，**網址不會帶任何參數**，所以範例把訂單編號放在自己的網址裡。
--   失敗時回到 `failureUrl`，網址加上 `payment_error`，例如 `&payment_error=T0004`。
+-   失敗時回到 `failureUrl`，網址加上 `payment_error`，例如 `?payment_error=T0004`。
 
 > 不要只靠導回來判斷付款成功
 > 

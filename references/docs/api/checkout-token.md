@@ -42,7 +42,7 @@ curl -X POST "https://payment-api.testing.oen.tw/checkout-token" \
   -d '{
   "merchantId": "ming",
   "successUrl": "https://shop.example.com/cards/added?member=M001",
-  "failureUrl": "https://shop.example.com/cards/failed?member=M001",
+  "failureUrl": "https://shop.example.com/cards/failed/M001",
   "customId": "M001",
   "payerEmail": "ming@example.com"
 }'
@@ -58,7 +58,7 @@ const res = await fetch("https://payment-api.testing.oen.tw/checkout-token", {
   body: JSON.stringify({
     "merchantId": "ming",
     "successUrl": "https://shop.example.com/cards/added?member=M001",
-    "failureUrl": "https://shop.example.com/cards/failed?member=M001",
+    "failureUrl": "https://shop.example.com/cards/failed/M001",
     "customId": "M001",
     "payerEmail": "ming@example.com"
   }),
@@ -83,7 +83,7 @@ curl_setopt_array($ch, [
     CURLOPT_POSTFIELDS => json_encode([
         'merchantId' => 'ming',
         'successUrl' => 'https://shop.example.com/cards/added?member=M001',
-        'failureUrl' => 'https://shop.example.com/cards/failed?member=M001',
+        'failureUrl' => 'https://shop.example.com/cards/failed/M001',
         'customId' => 'M001',
         'payerEmail' => 'ming@example.com',
     ]),
@@ -106,7 +106,7 @@ res = requests.request(
     json={
         "merchantId": "ming",
         "successUrl": "https://shop.example.com/cards/added?member=M001",
-        "failureUrl": "https://shop.example.com/cards/failed?member=M001",
+        "failureUrl": "https://shop.example.com/cards/failed/M001",
         "customId": "M001",
         "payerEmail": "ming@example.com",
     },
