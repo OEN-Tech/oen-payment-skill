@@ -5,24 +5,6 @@
   "linksRewritten": true,
   "pages": [
     {
-      "path": "ai/index.md",
-      "title": "用 AI 助手串接",
-      "url": "https://developers.oentech.ai/ai/",
-      "bytes": 2567
-    },
-    {
-      "path": "ai/mcp.md",
-      "title": "Payment MCP",
-      "url": "https://developers.oentech.ai/ai/mcp/",
-      "bytes": 1965
-    },
-    {
-      "path": "ai/skill.md",
-      "title": "Payment Skill",
-      "url": "https://developers.oentech.ai/ai/skill/",
-      "bytes": 2388
-    },
-    {
       "path": "api/cancel-subscription.md",
       "title": "取消定期定額",
       "url": "https://developers.oentech.ai/api/cancel-subscription/",

@@ -3,14 +3,19 @@
 #
 # 用法：scripts/sync-docs.sh <bundle-dir>
 #
-# <bundle-dir> 是文件站匯出工具產生的目錄，裡面有 manifest.json、INDEX.md，
+# <bundle-dir> 是應援維護者用文件站匯出工具產生的目錄，裡面有 manifest.json、INDEX.md，
 # 以及 api/、developers/、start/、products/、ai/ 等章節。
-# 這支腳本只複製 api/、developers/、start/、products/ 與 INDEX.md、manifest.json；
+#
+# 這支腳本只複製 api/、developers/、start/、products/ 與 INDEX.md、manifest.json。
 # ai/ 是介紹 Skill 與 MCP 本身的頁面，Skill 用不到，所以不複製。
-# 複製的內容一律原樣保留，不做任何修改。
+# 頁面內容一律原樣保留；只有兩個索引檔會配合「不複製 ai/」調整：
+#   - INDEX.md：刪掉「章節」欄是 ai 的列，其餘內容不動。
+#   - manifest.json：pages 只留下實際複製的頁面，其他欄位（sourceCommit 等）不動。
+# 這樣 SKILL.md 叫 AI 查 INDEX.md 時，列出的路徑都讀得到。
 set -euo pipefail
 
 SECTIONS="api developers start products"
+EXCLUDED_SECTION="ai"
 
 die() {
   echo "錯誤：$*" >&2
@@ -22,9 +27,15 @@ die() {
   exit 2
 }
 
+command -v python3 >/dev/null 2>&1 || die "需要 python3 才能調整索引檔與檢查連結"
+
+REPO=$(cd "$(dirname "$0")/.." && pwd)
+# 確認腳本所在的 repo 就是這個 Skill，避免在別的目錄刪掉 references/docs/。
+[ -f "$REPO/SKILL.md" ] && grep -q '^name: oen-payment$' "$REPO/SKILL.md" ||
+  die "$REPO 不是 oen-payment skill 的目錄（找不到 name: oen-payment 的 SKILL.md）"
+
 [ -d "$1" ] || die "找不到 bundle 目錄：$1"
 BUNDLE=$(cd "$1" && pwd)
-REPO=$(cd "$(dirname "$0")/.." && pwd)
 DEST="$REPO/references/docs"
 
 [ -f "$BUNDLE/manifest.json" ] || die "$BUNDLE 沒有 manifest.json，這不是文件站匯出的 bundle"
@@ -33,19 +44,63 @@ for section in $SECTIONS; do
   [ -d "$BUNDLE/$section" ] || die "$BUNDLE 沒有 $section/ 目錄"
 done
 
-# 先複製到暫存目錄，全部成功後再換掉 references/docs/，避免留下一半新一半舊的內容。
+# 先在暫存目錄準備好新內容。
 mkdir -p "$REPO/references"
-TMP=$(mktemp -d "$REPO/references/.docs-sync.XXXXXX")
-trap 'rm -rf "$TMP"' EXIT
+NEW=$(mktemp -d "$REPO/references/.docs-new.XXXXXX")
+OLD=""
+cleanup() {
+  rm -rf "$NEW"
+  [ -z "$OLD" ] || [ ! -d "$OLD" ] || [ -d "$DEST" ] || mv "$OLD" "$DEST"
+}
+trap cleanup EXIT
 
 for section in $SECTIONS; do
-  cp -R "$BUNDLE/$section" "$TMP/$section"
+  cp -R "$BUNDLE/$section" "$NEW/$section"
 done
-cp "$BUNDLE/INDEX.md" "$BUNDLE/manifest.json" "$TMP/"
-find "$TMP" -name '.DS_Store' -delete
+cp "$BUNDLE/INDEX.md" "$BUNDLE/manifest.json" "$NEW/"
+find "$NEW" -name '.DS_Store' -delete
 
-rm -rf "$DEST"
-mv "$TMP" "$DEST"
+# 把 ai/ 從兩個索引檔拿掉（見檔頭說明）。
+python3 - "$NEW" "$EXCLUDED_SECTION" <<'PY'
+import json
+import os
+import sys
+
+dest, excluded = sys.argv[1], sys.argv[2]
+
+index_path = os.path.join(dest, "INDEX.md")
+with open(index_path, encoding="utf-8") as f:
+    lines = f.read().splitlines(keepends=True)
+kept = []
+for line in lines:
+    cells = [c.strip() for c in line.strip().strip("|").split("|")] if line.lstrip().startswith("|") else []
+    if cells and cells[0] == excluded:
+        continue
+    kept.append(line)
+with open(index_path, "w", encoding="utf-8") as f:
+    f.writelines(kept)
+
+manifest_path = os.path.join(dest, "manifest.json")
+with open(manifest_path, encoding="utf-8") as f:
+    manifest = json.load(f)
+manifest["pages"] = [
+    page for page in manifest.get("pages", [])
+    if not page.get("path", "").startswith(excluded + "/")
+]
+with open(manifest_path, "w", encoding="utf-8") as f:
+    f.write(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n")
+PY
+
+# 換上新內容：舊目錄先移開，新目錄移進來成功後才刪舊的；
+# 中途失敗時 cleanup 會把舊目錄放回去，不會讓 references/docs/ 消失。
+if [ -d "$DEST" ]; then
+  OLD=$(mktemp -d "$REPO/references/.docs-old.XXXXXX")
+  rmdir "$OLD"
+  mv "$DEST" "$OLD"
+fi
+mv "$NEW" "$DEST"
+[ -z "$OLD" ] || rm -rf "$OLD"
+OLD=""
 trap - EXIT
 
 manifest_string() {
@@ -63,10 +118,9 @@ echo "generatedAt: $(manifest_string generatedAt)"
 echo "siteUrl: $(manifest_string siteUrl)"
 echo "linksRewritten: $(manifest_bool linksRewritten)"
 
-# 檢查：manifest 列出的頁面（ai/ 除外）是否都在，以及頁面之間的相對連結是否都指得到檔案。
-# 只提出警告，不中斷。需要 python3，沒有就略過。
-if command -v python3 >/dev/null 2>&1; then
-  python3 - "$DEST" <<'PY'
+# 檢查：manifest 與 INDEX.md 列出的檔案都在、manifest 與實際頁面一致、
+# 頁面之間的相對連結都指得到檔案。只提出警告，不中斷。
+python3 - "$DEST" <<'PY'
 import json
 import os
 import re
@@ -78,12 +132,48 @@ problems = []
 
 with open(os.path.join(dest, "manifest.json"), encoding="utf-8") as f:
     manifest = json.load(f)
+listed = set()
 for page in manifest.get("pages", []):
     path = page.get("path", "")
-    if path.startswith("ai/"):
-        continue
+    listed.add(path)
     if not os.path.isfile(os.path.join(dest, path)):
-        problems.append(f"manifest 列出但沒有複製到：{path}")
+        problems.append(f"manifest.json 列出但檔案不存在：{path}")
+
+actual = set()
+for root, _, files in os.walk(dest):
+    for name in files:
+        if name.endswith(".md"):
+            rel = os.path.relpath(os.path.join(root, name), dest)
+            if rel != "INDEX.md":
+                actual.add(rel)
+for path in sorted(actual - listed):
+    problems.append(f"有這個檔案但 manifest.json 沒有列出：{path}")
+
+with open(os.path.join(dest, "INDEX.md"), encoding="utf-8") as f:
+    index_lines = f.read().splitlines()
+file_column = None
+index_count = 0
+for line in index_lines:
+    if not line.lstrip().startswith("|"):
+        continue
+    cells = [c.strip() for c in line.strip().strip("|").split("|")]
+    if file_column is None:
+        if "檔案" in cells:
+            file_column = cells.index("檔案")
+        continue
+    if set("".join(cells)) <= set("-: "):
+        continue
+    if file_column >= len(cells):
+        problems.append(f"INDEX.md 這一列沒有檔案欄：{line}")
+        continue
+    index_count += 1
+    path = cells[file_column]
+    if not os.path.isfile(os.path.join(dest, path)):
+        problems.append(f"INDEX.md 列出但檔案不存在：{path}")
+if file_column is None:
+    problems.append("INDEX.md 找不到「檔案」欄")
+elif index_count != len(listed):
+    problems.append(f"INDEX.md 列了 {index_count} 頁，manifest.json 列了 {len(listed)} 頁")
 
 link = re.compile(r"\]\(([^)\s]+)\)")
 site_absolute = 0
@@ -118,8 +208,5 @@ if problems:
     for problem in problems:
         print(f"  - {problem}", file=sys.stderr)
 else:
-    print("檢查：manifest 頁面與相對連結都正常")
+    print(f"檢查：manifest.json 與 INDEX.md 的 {len(listed)} 頁都在，相對連結都正常")
 PY
-else
-  echo "未安裝 python3，略過連結檢查"
-fi

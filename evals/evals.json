@@ -143,14 +143,15 @@
     },
     {
       "id": 11,
-      "prompt": "應援有沒有 Hosted Checkout 的 API？我想直接在自己的頁面收卡號再丟給應援扣款，要用哪支端點？",
-      "expected_output": "Explanation that Hosted Checkout and APIs that send full card numbers are not public, that the public Payment API uses the OEN checkout page (or the saved-card token flow), and that Embed needs activation; the user should contact OEN sales for special needs",
+      "prompt": "應援 Payment API 總共有哪些端點？另外我想要一支可以直接帶卡號扣款的 API，還有一支可以修改定期定額每期金額的 API，要怎麼呼叫？",
+      "expected_output": "A list of only the public endpoints documented in references/docs/api/ (the endpoint list in api/index.md), an explanation that there is no public endpoint for charging with a raw card number or for changing a subscription's amount, no invented endpoints, and a suggestion to contact OEN sales or support for anything not listed",
       "files": [],
       "expectations": [
-        "States that Hosted Checkout is not public and that APIs sending full card numbers require PCI DSS and are not public",
-        "Does not invent endpoints or request fields for sending card numbers",
-        "Offers the public alternatives: POST /checkout with the OEN checkout page, or /checkout-token plus /token/transactions for saved cards",
-        "Mentions Embed as an option that must be activated by OEN first, and suggests contacting OEN sales"
+        "Lists only endpoints from the public endpoint list in api/index.md; every method and path it gives exists in that list",
+        "Does not invent an endpoint, request field or URL for charging with a raw card number or for editing a subscription amount",
+        "Says APIs that send full card numbers require PCI DSS and are not publicly documented, and offers the public alternatives (the OEN checkout page, or /checkout-token followed by /token/transactions)",
+        "Says a subscription's per-period amount is fixed and changing it means cancelling and creating a new subscription",
+        "Suggests contacting OEN sales or support for needs the public endpoints do not cover"
       ]
     }
   ]

@@ -81,7 +81,7 @@ git clone https://github.com/OEN-Tech/oen-payment-skill.git .claude/skills/oen-p
 
 ## 不涵蓋
 
-- **Hosted Checkout** 與**需要傳送完整卡號的 API**：沒有公開，有需求請聯絡應援業務。
+- **文件站沒有列出的端點或產品**：Skill 只涵蓋 `references/docs/api/` 列出的公開端點，其他需求請聯絡應援業務或客服。需要傳送完整卡號的 API 要符合 PCI DSS，不在文件站公開。
 - **Embed 嵌入式付款、Subscription API、WooCommerce 外掛**：要先請應援開通。Skill 只附上文件站的說明頁，預設以 Payment API 回答。
 - **Payment MCP**：目前是應援內部預覽版，尚未對外開放，見[文件站說明](https://developers.oentech.ai/ai/mcp/)。
 - **測試卡號**：各網域的測試環境收單設定不同，請向應援的聯絡人索取。
@@ -110,10 +110,24 @@ git clone https://github.com/OEN-Tech/oen-payment-skill.git .claude/skills/oen-p
 scripts/sync-docs.sh <bundle-dir>
 ```
 
-- `<bundle-dir>` 是文件站匯出的目錄，裡面要有 `manifest.json`、`INDEX.md` 與各章節目錄。
-- 腳本會用 bundle 的 `api/`、`developers/`、`start/`、`products/`、`INDEX.md`、`manifest.json` 取代 `references/docs/`（不複製介紹 Skill 與 MCP 本身的 `ai/`），並印出 `sourceCommit`、`generatedAt`。
-- 有安裝 `python3` 時，腳本會再檢查 manifest 列出的頁面都有複製到，以及頁面之間的相對連結都指得到檔案；有問題只會列出警告，不會中斷。
+- `<bundle-dir>` 由應援的維護者用文件站的匯出工具產生；一般使用者只要在安裝目錄執行 `git pull` 就能取得更新，不需要自己執行這支腳本。
+- bundle 裡要有 `manifest.json`、`INDEX.md` 與各章節目錄。腳本會用 bundle 的 `api/`、`developers/`、`start/`、`products/`、`INDEX.md`、`manifest.json` 取代 `references/docs/`，並印出 `sourceCommit`、`generatedAt`。
+- 介紹 Skill 與 MCP 本身的 `ai/` 不複製；`INDEX.md` 會刪掉章節是 `ai` 的列，`manifest.json` 的 `pages` 只留下實際複製的頁面，其他內容原樣保留。
+- 腳本需要 `python3`。它會先確認自己位在這個 Skill 的目錄，換上新內容時先把舊目錄移開，成功後才刪除；最後檢查 `manifest.json` 與 `INDEX.md` 列出的檔案都存在、頁面之間的相對連結都指得到檔案，有問題只列出警告。
 - 同步後用 `git diff references/docs` 檢查變更，再一起提交。
+
+## 維護：文件站網址
+
+文件站目前是預覽站 `developers.oentech.ai`。正式網域 developers.oen.tw 上線時，要把下列手寫檔案中的預覽網址全部換掉；`references/docs/` 重新匯出就會更新，不用手改。
+
+| 檔案 | 次數 | 位置 |
+| --- | --- | --- |
+| `SKILL.md` | 3 | 第 3 行 description 的觸發詞（換網域後會和 developers.oen.tw 重複，直接刪掉即可）、第 112 行〈不涵蓋〉的 Payment MCP 出處、第 118 行〈文件站〉 |
+| `README.md` | 5 | 第 19 行開頭說明、第 86 行〈不涵蓋〉的 Payment MCP 連結、第 121 行本段開頭、第 156、157 行〈相關資源〉 |
+| `evals/evals.json` | 1 | 第 128 行，情境 9 的期望 |
+| `evals/trigger_eval.json` | 1 | 第 55 行，`PRODUCT_AMOUNT_NOT_MATCH` 的觸發題 |
+
+換完後執行 `grep -rn 'oentech\.ai' SKILL.md README.md evals/`，應該沒有任何結果，之後就可以刪掉本段。
 
 ## 檔案結構
 

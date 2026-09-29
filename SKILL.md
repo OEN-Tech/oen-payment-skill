@@ -1,6 +1,6 @@
 ---
 name: oen-payment
-description: 應援科技 OEN Payment API（應援金流）串接助手：建立結帳頁、定期定額、綁卡與 token 扣款、退款、查詢交易、接收付款通知（webhook）、解讀錯誤碼。只要使用者提到 oen payment、oen 金流、應援金流、應援 API、應援結帳、payment-api.oen.tw、payment-api.testing.oen.tw、{網域}.oen.tw/checkout、checkout-subscription、checkout-schedule、checkout-token、token/transactions、payment_error、C026、developers.oen.tw、developers.oentech.ai，或在應援的情境下要做 checkout、subscription、定期定額、refund、退款、webhook、付款通知、存卡、token 扣款、對帳，就使用這個 skill；即使沒有明講「應援」，只要程式或網址指向 oen.tw 的金流也要使用。Use it for OEN Payment API work — checkout pages, recurring subscriptions, saved-card token charges, refunds, webhook handlers, reconciliation and error codes. 不適用其他金流（Stripe、綠界 ECPay、直接串接藍新金流、PayPal）。
+description: 應援科技 OEN Payment API（應援金流）串接助手：建立結帳頁、定期定額、綁卡與 token 扣款、退款、查詢交易、接收付款通知（webhook）、解讀錯誤碼。只要使用者提到 oen payment、oen 金流、應援金流、應援 API、應援結帳、payment-api.oen.tw、payment-api.testing.oen.tw、{網域}.oen.tw/checkout、developers.oen.tw、developers.oentech.ai，或在應援的情境下要做 checkout、subscription、定期定額、refund、退款、webhook、付款通知、存卡、token 扣款、對帳，就使用這個 skill；在呼叫 payment-api.oen.tw 或應援金流的程式裡出現 checkout-subscription、checkout-schedule、checkout-token、token/transactions、payment_error、C026 時也要使用；使用者詢問應援的 Payment MCP 是否開放時也適用。Use it for OEN Payment API work — checkout pages, recurring subscriptions, saved-card token charges, refunds, webhook handlers, reconciliation and error codes. 不適用其他金流（Stripe、綠界 ECPay、直接串接藍新金流、PayPal）。
 ---
 
 # 應援 Payment API 串接助手
@@ -54,9 +54,9 @@ description: 應援科技 OEN Payment API（應援金流）串接助手：建立
 
 1. **`productDetails` 一律必填。** `/checkout`、`/checkout-subscription`、`/checkout-schedule`、`/token/transactions`、`/token/subscriptions` 都要帶，各品項 `quantity × unitPrice` 的合計必須等於 `amount`，金額都是新台幣整數。有折扣或運費時，調整品項讓合計等於實付金額。沒帶回 400 `V0001`，合計不符回 `PRODUCT_AMOUNT_NOT_MATCH`。（`developers/one-time.md`、`developers/errors.md`、`api/checkout.md`）
 2. **回應只有 `{ id, transactionHid }`，結帳頁網址要自己組**：`https://{merchantId}.oen.tw/checkout/{id}`，測試環境是 `{merchantId}.testing.oen.tw`。定期定額是 `/checkout/subscription/{id}`；預約定期定額是 `/checkout/schedule/{id}`，回應是 `{ id, subscriptionHid }`；綁卡頁是 `/checkout/subscription/create/{id}`。27 字元的 `id` 用來回查，`P` 開頭的 `transactionHid` 用來退款，兩個都要存進訂單。（`developers/environments.md`、`api/checkout.md`、`api/checkout-schedule.md`）
-3. **結帳頁從呼叫 API 起算 5 分鐘內有效，綁卡頁 10 分鐘。** 所以要在消費者按下付款時才建立，建立後立刻導過去，不要先產生連結再寄出。逾時會導回 `failureUrl?payment_error=V0002`，綁卡頁是 `Y003`。（`developers/environments.md`、`developers/one-time.md`）
+3. **結帳頁從呼叫 API 起算 5 分鐘內有效，綁卡頁 10 分鐘。** 所以要在消費者按下付款時才建立，建立後立刻導過去，不要先產生連結再寄出。逾時會導回 `failureUrl?payment_error=V0002`，綁卡頁是 `Y003`。（`developers/environments.md`、`developers/one-time.md`、`developers/saved-cards.md`、`api/error-codes.md`）
 4. **`successUrl` 導回時不帶任何參數，也不代表付款成功。** 自己的訂單編號要放在網址裡，頁面再到後端查訂單狀態。`failureUrl` 會加上 `payment_error`，只用來顯示訊息；訂單編號用路徑帶，`failureUrl` 不要自帶 `?`。（`developers/one-time.md`、`api/error-codes.md`）
-5. **只收新台幣**，`currency` 可以不帶。`allowedPaymentMethods` 是「加開」：信用卡一定會出現，Apple Pay 條件符合時自動出現。只有 `/checkout` 能選付款方式，定期定額與存卡只收信用卡。（`developers/payment-methods.md`）
+5. **只收新台幣**，`currency` 可以不帶。`allowedPaymentMethods` 是「加開」：信用卡一定會出現，Apple Pay 條件符合時自動出現。只有 `/checkout` 能選付款方式，定期定額與存卡只收信用卡。（`developers/payment-methods.md`、`developers/one-time.md`）
 6. **規格外的欄位會被直接忽略、不報錯。** Payment API 沒有 `webhookUrl`、`cancelUrl` 這類欄位，付款通知網址只能在 CRM 設定。（`api/index.md`）
 
 ### 付款結果與付款通知
@@ -104,10 +104,13 @@ description: 應援科技 OEN Payment API（應援金流）串接助手：建立
 
 ## 不涵蓋
 
-- 只教 `api/index.md` 端點一覽裡的 13 支公開端點。Hosted Checkout 沒有公開；需要傳送完整卡號的 API 要符合 PCI DSS，也不公開（`api/index.md`）。使用者有這類需求時，請他聯絡應援業務，不要自行推測端點或欄位。
+標「範圍規定」的是這個 skill 自己的規定，不是文件站的內容。
+
+- 只涵蓋 `references/docs/api/` 列出的公開端點（一覽見 `api/index.md`）。文件沒有列出的端點或產品，不要推測端點、欄位或行為，請使用者聯絡應援業務或客服。（範圍規定）
+- 需要傳送完整卡號的 API 要符合 PCI DSS，不在文件站公開。（`api/index.md`）
 - Embed 嵌入式付款、Subscription API、WooCommerce 外掛都要先請應援開通（`start/choose.md`、`products/embed.md`、`products/subscription-api.md`）。使用者沒有說已經開通時，先用 Payment API 回答。
-- Payment MCP 是內部預覽版，尚未對外開放，不要提供安裝步驟，請使用者看 https://developers.oentech.ai/ai/mcp/ 。
-- 手續費與費率不寫任何數字，請使用者到 CRM 查看或詢問應援業務。
+- Payment MCP 是應援的內部預覽版，尚未對外開放。（https://developers.oentech.ai/ai/mcp/ ）
+- 手續費與費率不寫任何數字，請使用者到 CRM 查看或詢問應援業務。（範圍規定）
 - 開通付款方式、撥款、發票作業等商家後台操作，請商家看文件站的商家指南或聯絡應援客服。（`start/faq.md`）
 
 ## 文件站

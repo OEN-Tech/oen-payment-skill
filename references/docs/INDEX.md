@@ -4,9 +4,6 @@
 
 | 章節 | 標題 | 檔案 | 網址 |
 | --- | --- | --- | --- |
-| ai | 用 AI 助手串接 | ai/index.md | https://developers.oentech.ai/ai/ |
-| ai | Payment MCP | ai/mcp.md | https://developers.oentech.ai/ai/mcp/ |
-| ai | Payment Skill | ai/skill.md | https://developers.oentech.ai/ai/skill/ |
 | api | 取消定期定額 | api/cancel-subscription.md | https://developers.oentech.ai/api/cancel-subscription/ |
 | api | 建立預約定期定額 | api/checkout-schedule.md | https://developers.oentech.ai/api/checkout-schedule/ |
 | api | 建立定期定額 | api/checkout-subscription.md | https://developers.oentech.ai/api/checkout-subscription/ |
